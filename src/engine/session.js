@@ -58,9 +58,10 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
     const trimmed = input.trim();
     if (!trimmed) { onOutput('> '); return; }
 
-    commandHistory = [...commandHistory.slice(-19), trimmed];
+    const normalized = trimmed.toLowerCase();
+    commandHistory = [...commandHistory.slice(-19), trimmed]; // keep original casing in history display
 
-    const result = processCommand(trimmed.toLowerCase(), currentScene);
+    const result = processCommand(normalized, currentScene);
 
     if (result.pivotTaken) {
       sceneManager.setPivotTaken(true);
@@ -83,9 +84,9 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
 
     if (result.type === 'unknown') {
       if (latentsProcessor && currentScene.latents && currentScene.latents.length > 0) {
-        const { text, effect } = await latentsProcessor.process(trimmed, currentScene, latentConversation);
+        const { text, effect } = await latentsProcessor.process(normalized, currentScene, latentConversation);
         applyEffect(effect);
-        latentConversation = [...latentConversation, { command: trimmed, response: text }];
+        latentConversation = [...latentConversation, { command: normalized, response: text }];
         onOutput('\n' + text + '\n\n> ');
       } else {
         onOutput('\nUnknown command. ' + HELP_TEXT + '\n\n> ');
