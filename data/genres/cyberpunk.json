@@ -1,8 +1,8 @@
 {
-  "LOCATION": ["neon alley", "chrome district", "the data sink", "corporate arcology sublevel", "black-market exchange"],
-  "ANTAGONIST": ["corp enforcer", "rogue ICE", "the syndicate", "augmented bounty hunter"],
+  "LOCATION": ["neon alley", "chrome district", "data sink", "corporate arcology sublevel", "black-market exchange"],
+  "ANTAGONIST": ["corp enforcer", "rogue ICE", "syndicate", "augmented bounty hunter"],
   "MACGUFFIN": ["data shard", "neural key", "corporate override code", "black ledger chip"],
-  "THREAT": ["network lockdown", "killswitch signal", "the surveillance grid", "flatline protocol"],
+  "THREAT": ["network lockdown", "killswitch signal", "surveillance grid", "flatline protocol"],
   "CHARACTER": ["street fixer", "rogue archivist", "chrome runner", "signal ghost"],
   "ADJ": ["neon-soaked", "chrome-plated", "augmented", "encrypted", "static-laced"],
   "NOUN": ["signal", "wire", "static", "syndicate", "glitch"]
