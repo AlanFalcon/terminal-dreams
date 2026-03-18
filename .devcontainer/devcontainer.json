@@ -1,0 +1,19 @@
+{
+  "name": "Terminal Dreams",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "forwardPorts": [2222, 3000],
+  "portsAttributes": {
+    "2222": {
+      "label": "SSH Game Server",
+      "onAutoForward": "notify"
+    },
+    "3000": {
+      "label": "Web Terminal",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postCreateCommand": "npm install",
+  "remoteEnv": {
+    "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}"
+  }
+}
