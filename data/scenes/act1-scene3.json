@@ -15,5 +15,24 @@
   "pivot_action": "take",
   "pivot_target_slot": "MACGUFFIN",
   "pivot_taken_scene": "act2a-scene4",
-  "pivot_skipped_scene": "act2b-scene4"
+  "pivot_skipped_scene": "act2b-scene4",
+  "latents": [
+    {
+      "fact": "a {ADJ} cracked lens from some kind of optical device is wedged in a crack in the east wall",
+      "hint": "add_item",
+      "item": "cracked lens",
+      "item_desc": "A {ADJ} lens, cracked diagonally. When you hold it up, shapes look wrong through it."
+    },
+    {
+      "fact": "there is a second door behind the {ADJ} tapestry on the east wall — it is unlocked",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "A narrow passage behind the tapestry, leading somewhere quieter.",
+      "target_scene": "act2a-scene4"
+    },
+    {
+      "fact": "the floor here is slightly warmer than the rest of the room — something runs beneath it",
+      "hint": "npc_note"
+    }
+  ]
 }

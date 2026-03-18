@@ -16,5 +16,21 @@
   "pivot_action": null,
   "pivot_target_slot": null,
   "pivot_taken_scene": null,
-  "pivot_skipped_scene": null
+  "pivot_skipped_scene": null,
+  "latents": [
+    {
+      "fact": "a {ADJ} token — the kind used for passage or barter — has been slid under the door from outside",
+      "hint": "add_item",
+      "item": "{ADJ} token",
+      "item_desc": "A {ADJ} token, edge-worn. Someone pushed it under the door but didn't knock."
+    },
+    {
+      "fact": "the {ANTAGONIST} left something behind when they passed through — a mark on the doorframe that glows faintly",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "there is a second set of footprints in the dust that do not belong to anyone currently in the room",
+      "hint": "npc_note"
+    }
+  ]
 }

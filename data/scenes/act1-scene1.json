@@ -15,5 +15,21 @@
   "pivot_action": null,
   "pivot_target_slot": null,
   "pivot_taken_scene": null,
-  "pivot_skipped_scene": null
+  "pivot_skipped_scene": null,
+  "latents": [
+    {
+      "fact": "a tarnished coin half-buried in the dust near the entrance — someone dropped it in a hurry",
+      "hint": "add_item",
+      "item": "tarnished coin",
+      "item_desc": "A worn coin with a face you don't recognise. One side has been filed smooth."
+    },
+    {
+      "fact": "the {CHARACTER} has been scratching marks into the wall behind them — a count, or a warning",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "there is a gap between the baseboard and the floor where something flat has been pushed through",
+      "hint": "npc_note"
+    }
+  ]
 }

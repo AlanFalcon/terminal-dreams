@@ -16,5 +16,24 @@
   "pivot_action": null,
   "pivot_target_slot": null,
   "pivot_taken_scene": null,
-  "pivot_skipped_scene": null
+  "pivot_skipped_scene": null,
+  "latents": [
+    {
+      "fact": "a glass vial has rolled under the {ADJ} furniture — still sealed, contents unclear",
+      "hint": "add_item",
+      "item": "sealed vial",
+      "item_desc": "A small glass vial, sealed with wax. The liquid inside shifts colour when tilted."
+    },
+    {
+      "fact": "the window in this room doesn't show the outside — it shows a different room entirely",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "one of the {ADJ} marks on the wall is actually a door seam — it opens inward with enough pressure",
+      "hint": "unlock_exit",
+      "exit": "west",
+      "exit_desc": "A concealed door in the wall, leading to a dim passage.",
+      "target_scene": "act3-scene6"
+    }
+  ]
 }

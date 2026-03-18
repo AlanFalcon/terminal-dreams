@@ -15,5 +15,21 @@
   "pivot_action": null,
   "pivot_target_slot": null,
   "pivot_taken_scene": null,
-  "pivot_skipped_scene": null
+  "pivot_skipped_scene": null,
+  "latents": [
+    {
+      "fact": "something the {CHARACTER} dropped earlier is here — it must have arrived before you did",
+      "hint": "add_item",
+      "item": "lost keepsake",
+      "item_desc": "Something familiar. You didn't carry it here. You're not sure how it got here first."
+    },
+    {
+      "fact": "the {ANTAGONIST} is not gone — they are waiting in the place you least expect",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "the final exit looks permanent — but there is a second way out, hidden behind the {THREAT}",
+      "hint": "npc_note"
+    }
+  ]
 }
