@@ -30,18 +30,27 @@ function fillScene(template, world) {
     }
   }
 
+  const latents = (template.latents || []).map(latent => {
+    const filled = {};
+    for (const [key, val] of Object.entries(latent)) {
+      filled[key] = typeof val === 'string' ? fillTemplate(val, world) : val;
+    }
+    return filled;
+  });
+
   return {
     id: template.id,
     act: template.act,
     description,
     commands,
-    exits: template.exits,
+    exits: { ...template.exits },
     tiles: template.tiles,
     is_final: template.is_final || false,
     pivot_action: template.pivot_action,
     pivot_target_slot: template.pivot_target_slot,
     pivot_taken_scene: template.pivot_taken_scene,
     pivot_skipped_scene: template.pivot_skipped_scene,
+    latents,
   };
 }
 

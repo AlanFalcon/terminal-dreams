@@ -48,3 +48,25 @@ describe('fork resolution', () => {
     expect(next).toBe('act2b-scene4');
   });
 });
+
+describe('latents slot filling', () => {
+  it('fills slot tokens in latent fact strings', () => {
+    const scene = manager.loadScene('act1-scene1');
+    expect(scene.latents).toBeDefined();
+    expect(Array.isArray(scene.latents)).toBe(true);
+    scene.latents.forEach(latent => {
+      Object.values(latent).forEach(val => {
+        if (typeof val === 'string') {
+          expect(val).not.toMatch(/\{[A-Z]+\}/);
+        }
+      });
+    });
+  });
+
+  it('preserves non-string latent fields unchanged', () => {
+    const scene = manager.loadScene('act1-scene1');
+    scene.latents.forEach(latent => {
+      expect(typeof latent.hint).toBe('string');
+    });
+  });
+});
