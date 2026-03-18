@@ -67,3 +67,17 @@ describe('session.disconnect()', () => {
     expect(onLost).toHaveBeenCalledWith('test-session');
   });
 });
+
+describe('session inventory', () => {
+  it('starts with empty inventory', async () => {
+    const session = makeSession();
+    expect(session.inventory).toEqual([]);
+  });
+});
+
+describe('session latentConversation', () => {
+  it('starts with empty latentConversation', async () => {
+    const session = makeSession();
+    expect(session.latentConversation).toEqual([]);
+  });
+});

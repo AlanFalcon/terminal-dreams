@@ -15,6 +15,8 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
   let state = STATES.LOADING;
   let currentScene = null;
   let commandHistory = [];
+  let inventory = [];
+  let latentConversation = [];
 
   async function renderScene(scene) {
     const genreNames = world.genres.map(g => g.name);
@@ -107,6 +109,8 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
   return {
     get state() { return state; },
     get commandHistory() { return commandHistory; },
+    get inventory() { return inventory; },
+    get latentConversation() { return latentConversation; },
     start, command, disconnect,
   };
 }
