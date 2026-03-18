@@ -101,9 +101,6 @@ function createSSHServer({ port, deps }) {
       });
     });
 
-    client.on('close', () => {
-      if (session) session.disconnect();
-    });
   });
 
   return {

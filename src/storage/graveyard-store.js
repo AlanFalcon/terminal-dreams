@@ -8,7 +8,7 @@ function slugify(name) {
 
 function createGraveyardStore(graveyardDir) {
   if (!fs.existsSync(graveyardDir)) fs.mkdirSync(graveyardDir, { recursive: true });
-  const completedLog = path.join(graveyardDir, 'completed.log');
+  const completedLog = path.join(graveyardDir, '..', 'completed.log');
 
   function uniqueSlug(base) {
     const existing = fs.readdirSync(graveyardDir)

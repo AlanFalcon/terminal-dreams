@@ -4,16 +4,19 @@ const path = require('path');
 const os = require('os');
 const { createGraveyardStore } = require('../../src/storage/graveyard-store');
 
+let baseDir;
 let tmpDir;
 let store;
 
 beforeEach(() => {
-  tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'graveyard-test-'));
+  baseDir = fs.mkdtempSync(path.join(os.tmpdir(), 'td-test-'));
+  tmpDir = path.join(baseDir, 'graveyard');
+  fs.mkdirSync(tmpDir);
   store = createGraveyardStore(tmpDir);
 });
 
 afterEach(() => {
-  fs.rmSync(tmpDir, { recursive: true });
+  fs.rmSync(baseDir, { recursive: true });
 });
 
 describe('writeMemorial', () => {
@@ -39,7 +42,7 @@ describe('writeCompleted', () => {
       scenes: 10,
       timestamp: '2026-03-18T13:00:00Z',
     });
-    const logPath = path.join(tmpDir, 'completed.log');
+    const logPath = path.join(baseDir, 'completed.log');
     expect(fs.existsSync(logPath)).toBe(true);
     expect(fs.readFileSync(logPath, 'utf8')).toMatch('Done World');
   });

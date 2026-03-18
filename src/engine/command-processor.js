@@ -11,7 +11,10 @@ function processCommand(input, scene) {
         return { type: 'response', text: val, pivotTaken };
       }
       if (val.exit) {
-        const dir = cmd.replace(/^go\s+/, '');
+        // Find which direction in exits corresponds to this command
+        const dir = Object.keys(scene.exits).find(d =>
+          `go ${d}`.toLowerCase() === cmd.toLowerCase()
+        ) || cmd.replace(/^go\s+/, '');
         return { type: 'exit', direction: dir, pivotTaken };
       }
     }
