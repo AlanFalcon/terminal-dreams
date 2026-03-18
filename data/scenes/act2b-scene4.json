@@ -1,0 +1,19 @@
+{
+  "id": "act2b-scene4",
+  "act": 2,
+  "path": "B",
+  "descriptions": [
+    "You move fast into {LOCATION}. No time to look back.",
+    "But the {MACGUFFIN} — you feel its absence. The {ANTAGONIST} has it now."
+  ],
+  "commands": {
+    "look": "The {ANTAGONIST} is somewhere behind you with the {MACGUFFIN}. Ahead is {LOCATION}. Keep moving.",
+    "go north": { "exit": "act2b-scene5" }
+  },
+  "exits": { "north": "act2b-scene5" },
+  "tiles": ["location", "atmosphere"],
+  "pivot_action": null,
+  "pivot_target_slot": null,
+  "pivot_taken_scene": null,
+  "pivot_skipped_scene": null
+}

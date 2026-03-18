@@ -1,0 +1,19 @@
+{
+  "id": "act3-scene8",
+  "act": 3,
+  "descriptions": [
+    "You made it through.",
+    "The {LOCATION} fades. The {THREAT} recedes. You stand at the edge of the world — and it was enough."
+  ],
+  "commands": {
+    "look": "There is nothing left to look at. The story is over.",
+    "go north": { "exit": "__complete__" }
+  },
+  "exits": { "north": "__complete__" },
+  "tiles": ["atmosphere"],
+  "is_final": true,
+  "pivot_action": null,
+  "pivot_target_slot": null,
+  "pivot_taken_scene": null,
+  "pivot_skipped_scene": null
+}

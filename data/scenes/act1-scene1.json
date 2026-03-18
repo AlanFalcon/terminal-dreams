@@ -1,0 +1,19 @@
+{
+  "id": "act1-scene1",
+  "act": 1,
+  "descriptions": [
+    "You wake in {LOCATION}. The smell of {NOUN} is everywhere. Somewhere ahead, something stirs.",
+    "A {ADJ} light reveals a {CHARACTER} watching you from the far end of the room. They don't speak."
+  ],
+  "commands": {
+    "look": "The {ADJ} space stretches in all directions. A {CHARACTER} lingers near the exit. The path north is open.",
+    "talk to {CHARACTER}": "The {CHARACTER} says only: 'Move. While you still can.'",
+    "go north": { "exit": "act1-scene2" }
+  },
+  "exits": { "north": "act1-scene2" },
+  "tiles": ["location", "character"],
+  "pivot_action": null,
+  "pivot_target_slot": null,
+  "pivot_taken_scene": null,
+  "pivot_skipped_scene": null
+}

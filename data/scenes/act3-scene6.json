@@ -1,0 +1,18 @@
+{
+  "id": "act3-scene6",
+  "act": 3,
+  "descriptions": [
+    "The final {LOCATION} opens before you. This is it.",
+    "The {THREAT} has reached its peak. Whatever happens next happens here."
+  ],
+  "commands": {
+    "look": "The {ANTAGONIST} is close. The {LOCATION} offers one last option. Go north.",
+    "go north": { "exit": "act3-scene7" }
+  },
+  "exits": { "north": "act3-scene7" },
+  "tiles": ["location", "atmosphere"],
+  "pivot_action": null,
+  "pivot_target_slot": null,
+  "pivot_taken_scene": null,
+  "pivot_skipped_scene": null
+}

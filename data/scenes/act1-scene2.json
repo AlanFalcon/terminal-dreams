@@ -1,0 +1,20 @@
+{
+  "id": "act1-scene2",
+  "act": 1,
+  "descriptions": [
+    "The corridor opens into a {LOCATION}. The walls are {ADJ}. An abandoned {MACGUFFIN} sits on a cracked surface nearby.",
+    "Something about this place feels wrong. A distant sound — {THREAT} — echoes from the darkness ahead."
+  ],
+  "commands": {
+    "look": "The {LOCATION} is {ADJ} and unsettling. The {MACGUFFIN} catches your eye. North leads deeper in.",
+    "take {MACGUFFIN}": "You pocket the {MACGUFFIN}. It may matter later.",
+    "go north": { "exit": "act1-scene3" },
+    "go south": { "exit": "act1-scene1" }
+  },
+  "exits": { "north": "act1-scene3", "south": "act1-scene1" },
+  "tiles": ["location", "atmosphere"],
+  "pivot_action": null,
+  "pivot_target_slot": null,
+  "pivot_taken_scene": null,
+  "pivot_skipped_scene": null
+}

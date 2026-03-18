@@ -1,0 +1,20 @@
+{
+  "id": "act2a-scene5",
+  "act": 2,
+  "path": "A",
+  "descriptions": [
+    "The {LOCATION} is {ADJ} with tension. The {ANTAGONIST} has caught your trail.",
+    "The {CHARACTER} from before appears at your side. 'Through here. The {MACGUFFIN} will open the door.'"
+  ],
+  "commands": {
+    "look": "The {ANTAGONIST} is visible at the far end. The ally holds the line. North is your escape.",
+    "talk to {CHARACTER}": "'I'll hold them. Go north. Don't stop.'",
+    "go north": { "exit": "act3-scene6" }
+  },
+  "exits": { "north": "act3-scene6" },
+  "tiles": ["location", "character"],
+  "pivot_action": null,
+  "pivot_target_slot": null,
+  "pivot_taken_scene": null,
+  "pivot_skipped_scene": null
+}

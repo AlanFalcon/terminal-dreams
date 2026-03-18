@@ -1,0 +1,22 @@
+{
+  "id": "act2a-scene4",
+  "act": 2,
+  "path": "A",
+  "descriptions": [
+    "The {MACGUFFIN} pulses in your hand as you enter {LOCATION}. It unlocked something.",
+    "A {CHARACTER} steps out of the shadows. 'You have it,' they say. 'That changes things.'"
+  ],
+  "commands": {
+    "look": "The {MACGUFFIN} glows faintly. The {CHARACTER} watches. North leads on.",
+    "talk to {CHARACTER}": "'{MACGUFFIN}... I thought it was lost. We may have a chance.' They step aside.",
+    "use {MACGUFFIN}": "You activate the {MACGUFFIN}. A passage opens to the east.",
+    "go north": { "exit": "act2a-scene5" },
+    "go east": { "exit": "act2a-scene5" }
+  },
+  "exits": { "north": "act2a-scene5", "east": "act2a-scene5" },
+  "tiles": ["character", "atmosphere"],
+  "pivot_action": null,
+  "pivot_target_slot": null,
+  "pivot_taken_scene": null,
+  "pivot_skipped_scene": null
+}

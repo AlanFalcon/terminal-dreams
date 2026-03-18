@@ -1,0 +1,20 @@
+{
+  "id": "act2b-scene5",
+  "act": 2,
+  "path": "B",
+  "descriptions": [
+    "{LOCATION}. The {ANTAGONIST} is using the {MACGUFFIN} against you — you can feel it.",
+    "A {CHARACTER} blocks your path. 'You should have taken it,' they say. 'Now we improvise.'"
+  ],
+  "commands": {
+    "look": "The {CHARACTER} looks grim. The {ANTAGONIST} is closing in. North is the only option.",
+    "talk to {CHARACTER}": "'I know another way. But it will cost us. Go north — now.'",
+    "go north": { "exit": "act3-scene6" }
+  },
+  "exits": { "north": "act3-scene6" },
+  "tiles": ["location", "character"],
+  "pivot_action": null,
+  "pivot_target_slot": null,
+  "pivot_taken_scene": null,
+  "pivot_skipped_scene": null
+}

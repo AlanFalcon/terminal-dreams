@@ -1,0 +1,19 @@
+{
+  "id": "act1-scene3",
+  "act": 1,
+  "descriptions": [
+    "You reach the threshold of {LOCATION}. The {ANTAGONIST} is close — you can feel it.",
+    "On the ground near the exit: a {MACGUFFIN}. Do you take it, or keep moving?"
+  ],
+  "commands": {
+    "look": "The exit is north. A {MACGUFFIN} lies at your feet. The {ANTAGONIST} is getting closer.",
+    "take {MACGUFFIN}": "You snatch the {MACGUFFIN} and press north. Good call.",
+    "go north": { "exit": "__fork__" }
+  },
+  "exits": { "north": "__fork__" },
+  "tiles": ["location", "atmosphere"],
+  "pivot_action": "take",
+  "pivot_target_slot": "MACGUFFIN",
+  "pivot_taken_scene": "act2a-scene4",
+  "pivot_skipped_scene": "act2b-scene4"
+}
