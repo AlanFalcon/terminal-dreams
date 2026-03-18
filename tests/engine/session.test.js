@@ -142,4 +142,16 @@ describe('unknown command routing', () => {
     await session.command('go north'); // moves to next scene
     expect(session.latentConversation).toHaveLength(0);
   });
+
+  it('does not add duplicate items to inventory', async () => {
+    const mockProcess = jest.fn().mockResolvedValue({
+      text: 'You find a coin.',
+      effect: { type: 'add_item', item: 'tarnished coin', item_desc: 'A worn coin.' },
+    });
+    const session = makeSession({ latentsProcessor: { process: mockProcess } });
+    await session.start();
+    await session.command('dig in the dust');
+    await session.command('dig in the dust again');
+    expect(session.inventory).toHaveLength(1);
+  });
 });

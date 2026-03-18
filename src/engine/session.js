@@ -21,7 +21,9 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
   function applyEffect(effect) {
     if (!effect) return;
     if (effect.type === 'add_item') {
-      inventory = [...inventory, { item: effect.item, item_desc: effect.item_desc }];
+      if (!inventory.some(i => i.item === effect.item)) {
+        inventory = [...inventory, { item: effect.item, item_desc: effect.item_desc }];
+      }
     } else if (effect.type === 'unlock_exit') {
       currentScene.exits[effect.exit] = effect.target_scene;
     }
@@ -88,7 +90,7 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
       if (latentsProcessor && currentScene.latents && currentScene.latents.length > 0) {
         const { text, effect } = await latentsProcessor.process(normalized, currentScene, latentConversation);
         applyEffect(effect);
-        latentConversation = [...latentConversation, { command: normalized, response: text }];
+        latentConversation = [...latentConversation.slice(-9), { command: normalized, response: text }];
         onOutput('\n' + text + '\n\n> ');
       } else {
         onOutput('\nUnknown command. ' + HELP_TEXT + '\n\n> ');

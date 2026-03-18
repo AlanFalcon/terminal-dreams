@@ -48,7 +48,7 @@ function createLatentsProcessor(apiKey) {
         max_tokens: 400,
         messages: [{ role: 'user', content: buildPrompt(command, scene, history) }],
       });
-      const raw = message.content[0].text.trim();
+      const raw = message.content[0].text.trim().replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '');
       const parsed = JSON.parse(raw);
       if (typeof parsed.response !== 'string' || !parsed.response) return FALLBACK;
       return { text: parsed.response, effect: validateEffect(parsed.effect) };
