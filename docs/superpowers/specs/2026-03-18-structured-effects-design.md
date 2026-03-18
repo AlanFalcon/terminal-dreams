@@ -24,10 +24,11 @@ Each scene template (`data/scenes/*.json`) gains a `latents` array. Each entry i
     "item_desc": "A sealed capsule, still warm from the monkey's grip."
   },
   {
-    "fact": "a loose floor panel near the east wall",
+    "fact": "a loose floor panel near the east wall leading to the undercroft",
     "hint": "unlock_exit",
     "exit": "east",
-    "exit_desc": "A gap in the floor leading down into darkness."
+    "exit_desc": "A gap in the floor leading down into darkness.",
+    "target_scene": "act2a-scene3"
   },
   {
     "fact": "the bartender is deeply superstitious about whistling",
@@ -40,9 +41,11 @@ Each scene template (`data/scenes/*.json`) gains a `latents` array. Each entry i
 - `fact` — the hidden truth. Claude knows it; the player doesn't (until they discover it).
 - `hint` — soft guidance on what kind of effect *could* fire. Claude may choose differently if the action warrants it.
 - `item` / `item_desc` — pre-authored for `add_item` hints, so Claude doesn't invent names.
-- `exit` / `exit_desc` — pre-authored for `unlock_exit` hints.
+- `exit` — the direction key (e.g. `"east"`) for `unlock_exit` hints.
+- `exit_desc` — narrative flavor only; shown in Claude's response text, not stored in exits state.
+- `target_scene` — the scene ID to navigate to when this exit is taken. Required for `unlock_exit` hints.
 
-Slot tokens (`{ADJ}`, `{CHARACTER}`, etc.) work in latent fields exactly as they do in scene descriptions — filled at world-generation time.
+**Slot token filling:** `scene-manager.js` must extend `fillScene` to also iterate over the `latents` array and call `fillTemplate` on all string fields (`fact`, `item`, `item_desc`, `exit_desc`). Without this, slot tokens in latent fields would arrive raw.
 
 ### Scene Conversation History
 
@@ -63,8 +66,8 @@ Claude returns a constrained effect type. Valid types:
 
 | Type | Payload | Result |
 |------|---------|--------|
-| `add_item` | `item`, `item_desc` | Item added to `session.inventory` |
-| `unlock_exit` | `exit`, `exit_desc` | Exit added to current scene's available exits |
+| `add_item` | `item`, `item_desc` | Item added to `session.inventory` as `{ item, item_desc }` |
+| `unlock_exit` | `exit`, `target_scene` | `scene.exits[exit] = target_scene` added to current scene exits |
 | `npc_note` | — | Pure narrative flavor; no state change |
 | `nothing` | — | World shrugs: *"The words dissolve into the static."* |
 
@@ -116,12 +119,14 @@ The processor validates Claude's JSON output:
 - `response` must be a non-empty string
 - `effect.type` must be one of the four valid types
 - `add_item` effect must include `item` and `item_desc`
-- `unlock_exit` effect must include `exit` and `exit_desc`
+- `unlock_exit` effect must include `exit` and `target_scene`
 - On parse failure: fall back to `{ text: "The moment passes without consequence.", effect: null }`
 
 ---
 
 ## 4. Command Flow
+
+`command-processor.js` remains synchronous and unchanged beyond its existing exact + fuzzy match logic. When it returns no match, `session.js` is responsible for detecting this and calling `latentsProcessor.process()`.
 
 ```
 player types command
@@ -133,13 +138,14 @@ command-processor: exact match?
         ▼
 command-processor: fuzzy verb match?
         │ yes → return authored response
-        │ no
+        │ no → return { type: 'unknown' }
         ▼
-latents-processor: call Claude
+session.js detects { type: 'unknown' }
+calls latentsProcessor.process(command, scene, latentConversation)
         │
         ▼
 session: apply effect (if any)
-append to latentConversation
+append { command, response } to latentConversation
 show response to player
 ```
 
@@ -153,8 +159,8 @@ show response to player
 - `latentConversation: []` — initialized on session start, reset on scene transition
 
 **Effect application:**
-- `add_item` → push `{ name, desc }` to `inventory`
-- `unlock_exit` → merge exit into current scene's exits object
+- `add_item` → push `{ item, item_desc }` to `inventory`
+- `unlock_exit` → `scene.exits[effect.exit] = effect.target_scene`
 - `npc_note` / `nothing` → no state change
 
 ---
@@ -167,6 +173,8 @@ show response to player
 Carrying: pressure capsule, copper coin
 ```
 
+Inventory items are displayed by their `item` field (name only). `item_desc` is for Claude context and initial pickup narration only.
+
 Empty inventory: nothing shown.
 
 ---
@@ -176,9 +184,10 @@ Empty inventory: nothing shown.
 | File | Change |
 |------|--------|
 | `data/scenes/*.json` (10 files) | Add `latents` array to each scene |
+| `src/engine/scene-manager.js` | Extend `fillScene` to fill slot tokens in latents array |
 | `src/engine/latents-processor.js` | New — Claude call, effect parsing |
-| `src/engine/command-processor.js` | Fall-through to latents processor on no match |
-| `src/engine/session.js` | `inventory`, `latentConversation` state; apply effects; reset history on scene change |
+| `src/engine/command-processor.js` | No change — already returns `{ type: 'unknown' }` on no match |
+| `src/engine/session.js` | Detect `{ type: 'unknown' }`, call latents processor; `inventory` + `latentConversation` state; apply effects; reset history on scene change |
 | `src/interfaces/render.js` | Show inventory if non-empty |
 | `tests/engine/latents-processor.test.js` | New — unit tests with mocked Claude |
 
