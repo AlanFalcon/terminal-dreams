@@ -11,8 +11,8 @@ function ensureHostKey() {
   const keyDir = path.dirname(KEY_PATH);
   if (!fs.existsSync(keyDir)) fs.mkdirSync(keyDir, { recursive: true });
   if (!fs.existsSync(KEY_PATH)) {
-    const { privateKey } = crypto.generateKeyPairSync('ed25519');
-    fs.writeFileSync(KEY_PATH, privateKey.export({ type: 'pkcs8', format: 'pem' }), { mode: 0o600 });
+    const { privateKey } = crypto.generateKeyPairSync('rsa', { modulusLength: 2048 });
+    fs.writeFileSync(KEY_PATH, privateKey.export({ type: 'pkcs1', format: 'pem' }), { mode: 0o600 });
   }
   return fs.readFileSync(KEY_PATH);
 }
