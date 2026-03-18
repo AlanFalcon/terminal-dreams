@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["the Shattered Keep", "Thornwood Forest", "the Mage Quarter", "bone cathedral", "the Undercroft"],
+  "ANTAGONIST": ["the Lich Regent", "corrupted paladin", "the Hollow Court", "blood merchant"],
+  "MACGUFFIN": ["the Sealed Tome", "shattered crown shard", "binding rune", "the Oath Stone"],
+  "THREAT": ["the Unravelling", "curse propagation", "elder ward collapse", "the Tide of Ash"],
+  "CHARACTER": ["hedge witch", "disgraced knight", "archive keeper", "reluctant oracle"],
+  "ADJ": ["accursed", "crumbling", "spell-scarred", "eldritch", "forsaken"],
+  "NOUN": ["rune", "shard", "curse", "oath", "wraith"]
+}

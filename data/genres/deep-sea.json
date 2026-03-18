@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["abyssal trench", "flooded research dome", "the pressure shelf", "sunken vessel corridor", "bioluminescent forest"],
+  "ANTAGONIST": ["the brine-touched", "pressure wraith", "leviathan", "the drowned crew"],
+  "MACGUFFIN": ["dive manifest", "pressure capsule", "sonar recording", "hull cipher"],
+  "THREAT": ["hull breach", "the depth pressure", "oxygen depletion", "the hunger below"],
+  "CHARACTER": ["surface liaison", "dive doc", "the trapped researcher", "vent tender"],
+  "ADJ": ["abyssal", "bioluminescent", "pressure-warped", "drowned", "pelagic"],
+  "NOUN": ["brine", "trench", "tide", "depth", "abyss"]
+}

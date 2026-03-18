@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["press room floor", "convention hotel bar", "the governor's suite", "a rented convertible", "the press pool"],
+  "ANTAGONIST": ["the editor", "party chairman", "the PR handler", "campaign security"],
+  "MACGUFFIN": ["press credentials", "taped interview", "leaked memo", "campaign receipts"],
+  "THREAT": ["publication deadline", "defamation suit", "the blackout", "credential revocation"],
+  "CHARACTER": ["photographer", "campaign aide", "the source", "hotel bartender"],
+  "ADJ": ["frantic", "ink-stained", "half-crazed", "unaccredited", "libellous"],
+  "NOUN": ["deadline", "scoop", "headline", "lead", "byline"]
+}

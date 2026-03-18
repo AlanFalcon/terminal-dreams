@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["the last saloon", "dry canyon pass", "the railhead", "cursed homestead", "boot hill"],
+  "ANTAGONIST": ["the Outfit", "iron deputy", "the cattlemen's cartel", "outlaw preacher"],
+  "MACGUFFIN": ["land deed", "stolen payroll", "sheriff's manifest", "cursed coin"],
+  "THREAT": ["the posse", "the drought", "sundown law", "the hanging judge"],
+  "CHARACTER": ["drifter", "prairie doc", "telegraph operator", "wanted man"],
+  "ADJ": ["sun-bleached", "dust-choked", "outlawed", "iron-willed", "drifting"],
+  "NOUN": ["dust", "iron", "trail", "gulch", "brand"]
+}

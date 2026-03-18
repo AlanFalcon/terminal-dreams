@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["the non-Euclidean library", "the observatory dome", "the drowned city", "the mirror threshold", "the humming site"],
+  "ANTAGONIST": ["the Pale Congregation", "star-spawn", "the Custodian", "the dreaming thing"],
+  "MACGUFFIN": ["the Forbidden Calculation", "star chart fragment", "bound idol", "the inverted key"],
+  "THREAT": ["sanity dissolution", "the calling", "geometric impossibility", "the slow remembering"],
+  "CHARACTER": ["the last researcher", "cultist defector", "the lighthouse keeper", "unnamed correspondent"],
+  "ADJ": ["cyclopean", "non-Euclidean", "pale", "gibbering", "star-touched"],
+  "NOUN": ["void", "angle", "dream", "signal", "threshold"]
+}
