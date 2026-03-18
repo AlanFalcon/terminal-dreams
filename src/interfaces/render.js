@@ -8,5 +8,9 @@ function bold(text) { return `${BOLD}${text}${RESET}`; }
 function dim(text) { return `${DIM}${text}${RESET}`; }
 function clear() { return CLEAR; }
 function divider(width = 40) { return '─'.repeat(width); }
+function renderInventory(inventory) {
+  if (!inventory.length) return '';
+  return dim('Carrying: ' + inventory.map(i => i.item).join(', ')) + '\n';
+}
 
-module.exports = { bold, dim, clear, divider };
+module.exports = { bold, dim, clear, divider, renderInventory };

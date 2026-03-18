@@ -2,7 +2,7 @@
 const { createSceneManager } = require('./scene-manager');
 const { processCommand } = require('./command-processor');
 const { generateWorld } = require('./world-generator');
-const { bold, dim, clear } = require('../interfaces/render');
+const { bold, dim, clear, renderInventory } = require('../interfaces/render');
 
 const STATES = { LOADING: 'loading', PLAYING: 'playing', COMPLETE: 'complete', LOST: 'lost' };
 
@@ -38,6 +38,8 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
     onOutput(art + '\n\n');
     onOutput(bold(world.name) + '\n\n');
     onOutput(scene.description + '\n\n');
+    const inv = renderInventory(inventory);
+    if (inv) onOutput(inv + '\n');
     onOutput(dim(HELP_TEXT) + '\n');
     onOutput('> ');
 
