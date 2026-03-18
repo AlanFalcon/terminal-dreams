@@ -8,7 +8,7 @@ const STATES = { LOADING: 'loading', PLAYING: 'playing', COMPLETE: 'complete', L
 
 const HELP_TEXT = 'Commands: look | go [direction] | take [item] | talk to [character] | use [item]';
 
-function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memorialGenerator, tileLibrary, tileCompositor, tileGenerator }) {
+function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memorialGenerator, tileLibrary, tileCompositor, tileGenerator, latentsProcessor }) {
   const world = generateWorld();
   const sceneManager = createSceneManager(world);
 
@@ -17,6 +17,16 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
   let commandHistory = [];
   let inventory = [];
   let latentConversation = [];
+
+  function applyEffect(effect) {
+    if (!effect) return;
+    if (effect.type === 'add_item') {
+      inventory = [...inventory, { item: effect.item, item_desc: effect.item_desc }];
+    } else if (effect.type === 'unlock_exit') {
+      currentScene.exits[effect.exit] = effect.target_scene;
+    }
+    // npc_note and nothing: no state change
+  }
 
   async function renderScene(scene) {
     const genreNames = world.genres.map(g => g.name);
@@ -66,11 +76,22 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
       if (!nextId) { onOutput('\nYou cannot go that way.\n\n> '); return; }
       if (nextId === '__complete__') { await complete(); return; }
       currentScene = sceneManager.loadScene(nextId);
+      latentConversation = [];
       await renderScene(currentScene);
       return;
     }
 
-    onOutput('\nUnknown command. ' + HELP_TEXT + '\n\n> ');
+    if (result.type === 'unknown') {
+      if (latentsProcessor && currentScene.latents && currentScene.latents.length > 0) {
+        const { text, effect } = await latentsProcessor.process(trimmed, currentScene, latentConversation);
+        applyEffect(effect);
+        latentConversation = [...latentConversation, { command: trimmed, response: text }];
+        onOutput('\n' + text + '\n\n> ');
+      } else {
+        onOutput('\nUnknown command. ' + HELP_TEXT + '\n\n> ');
+      }
+      return;
+    }
   }
 
   async function complete() {
