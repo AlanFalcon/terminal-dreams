@@ -9,6 +9,8 @@ const { createLatentsProcessor } = require('./src/engine/latents-processor');
 const { createWriteQueue } = require('./src/storage/write-queue');
 const tileLibrary = require('./src/art/tile-library');
 const tileCompositor = require('./src/art/tile-compositor');
+const { createZoneGenerator } = require('./src/engine/zone-generator');
+const { createDescriptionGenerator } = require('./src/engine/description-generator');
 
 const SSH_PORT = parseInt(process.env.SSH_PORT || '2222');
 const WEB_PORT = parseInt(process.env.WEB_PORT || '3000');
@@ -24,6 +26,8 @@ const writeQueue = createWriteQueue();
 const memorialGenerator = createMemorialGenerator(ANTHROPIC_API_KEY);
 const tileGenerator = createTileGenerator(ANTHROPIC_API_KEY, writeQueue, tileLibrary);
 const latentsProcessor = createLatentsProcessor(ANTHROPIC_API_KEY);
+const zoneGenerator = createZoneGenerator();
+const descriptionGenerator = createDescriptionGenerator(ANTHROPIC_API_KEY);
 
 const deps = {
   graveyardStore,
@@ -32,6 +36,8 @@ const deps = {
   tileLibrary,
   tileCompositor,
   tileGenerator,
+  zoneGenerator,
+  descriptionGenerator,
 };
 
 const sshServer = createSSHServer({ port: SSH_PORT, deps });
