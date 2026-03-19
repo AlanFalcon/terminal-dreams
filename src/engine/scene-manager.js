@@ -23,7 +23,7 @@ function createSceneManager(world) {
     }
 
     if (gateMechanic === 'narrative') {
-      if (!gateTarget || !world.pendingZone) return null;
+      if (!gateTarget) return null;
       const exitVal = room.exits[direction];
       if (exitVal !== '__gate_unlocked__') return null;
       if (world.zones[gateTarget]?.status !== 'ready') return '__stall__';

@@ -42,7 +42,7 @@ describe('loadScene', () => {
   it('throws if room not found', () => {
     const world = makeWorld();
     const manager = createSceneManager(world);
-    expect(() => manager.loadScene('nonexistent')).toThrow();
+    expect(() => manager.loadScene('nonexistent')).toThrow('Room not found: nonexistent');
   });
 });
 
@@ -191,6 +191,7 @@ describe('setPivotTaken', () => {
     const manager = createSceneManager(world);
     manager.setPivotTaken(true);
     expect(gateRoom.gateTarget).toBe('act2a');
+    expect(world.pivotTaken).toBe(true);
   });
 
   it('sets gateTarget to act2b when pivot not taken', () => {
@@ -199,5 +200,6 @@ describe('setPivotTaken', () => {
     const manager = createSceneManager(world);
     manager.setPivotTaken(false);
     expect(gateRoom.gateTarget).toBe('act2b');
+    expect(world.pivotTaken).toBe(false);
   });
 });
