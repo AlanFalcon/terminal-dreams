@@ -1,83 +1,60 @@
-// src/engine/scene-manager.js
-const fs = require('fs');
-const path = require('path');
-const { fillSlot } = require('./world-generator');
-
-const SCENES_DIR = path.join(__dirname, '../../data/scenes');
-
-function loadSceneTemplate(sceneId) {
-  const filePath = path.join(SCENES_DIR, `${sceneId}.json`);
-  return JSON.parse(fs.readFileSync(filePath, 'utf8'));
-}
-
-function fillTemplate(text, world) {
-  return text.replace(/\{([A-Z]+)\}/g, (_, slot) => fillSlot(slot, world.genres));
-}
-
-function fillScene(template, world) {
-  const description = template.descriptions
-    .slice(0, Math.min(3, template.descriptions.length))
-    .map(d => fillTemplate(d, world))
-    .join('\n\n');
-
-  const commands = {};
-  for (const [cmd, val] of Object.entries(template.commands)) {
-    const filledCmd = fillTemplate(cmd, world);
-    if (typeof val === 'string') {
-      commands[filledCmd] = fillTemplate(val, world);
-    } else {
-      commands[filledCmd] = val;
+function createSceneManager(world) {
+  function loadScene(roomId) {
+    for (const zone of Object.values(world.zones)) {
+      if (!zone) continue;
+      const room = zone.rooms.find(r => r.id === roomId);
+      if (room) return room;
     }
+    throw new Error(`Room not found: ${roomId}`);
   }
 
-  const latents = (template.latents || []).map(latent => {
-    const filled = {};
-    for (const [key, val] of Object.entries(latent)) {
-      filled[key] = typeof val === 'string' ? fillTemplate(val, world) : val;
+  function resolveExit(room, direction) {
+    const raw = room.exits[direction];
+    if (!raw) return null;
+    return raw; // room id, __complete__, __gate_*, or __gate_unlocked__
+  }
+
+  function resolveGate(room, direction, world) {
+    const { gateMechanic, gateTarget } = room;
+
+    if (gateMechanic === 'open') {
+      if (world.pendingZone && world.zones[gateTarget]?.status !== 'ready') return '__stall__';
+      return world.zones[gateTarget]?.startRoomId || null;
     }
-    return filled;
-  });
 
-  return {
-    id: template.id,
-    act: template.act,
-    description,
-    commands,
-    exits: { ...template.exits },
-    tiles: template.tiles,
-    is_final: template.is_final || false,
-    pivot_action: template.pivot_action,
-    pivot_target_slot: template.pivot_target_slot,
-    pivot_taken_scene: template.pivot_taken_scene,
-    pivot_skipped_scene: template.pivot_skipped_scene,
-    latents,
-  };
-}
+    if (gateMechanic === 'narrative') {
+      if (!gateTarget || !world.pendingZone) return null;
+      const exitVal = room.exits[direction];
+      if (exitVal !== '__gate_unlocked__') return null;
+      if (world.zones[gateTarget]?.status !== 'ready') return '__stall__';
+      return world.zones[gateTarget].startRoomId;
+    }
 
-function createSceneManager(world) {
-  let pivotTaken = false;
+    if (gateMechanic === 'completion') {
+      const currentZone = Object.values(world.zones).find(z => z?.rooms.some(r => r.id === room.id));
+      const threshold = Math.ceil((currentZone?.rooms.length || 1) / 2);
+      if (world.discoveredLatents < threshold) return null;
+      if (world.zones[gateTarget]?.status !== 'ready') return '__stall__';
+      return world.zones[gateTarget].startRoomId;
+    }
 
-  function loadScene(sceneId) {
-    const template = loadSceneTemplate(sceneId);
-    return fillScene(template, world);
+    return null;
   }
 
   function setPivotTaken(value) {
-    pivotTaken = value;
+    world.pivotTaken = value;
+    const act1 = world.zones.act1;
+    if (act1) {
+      const gateRoom = act1.rooms.find(r => r.isGate);
+      if (gateRoom) gateRoom.gateTarget = value ? 'act2a' : 'act2b';
+    }
   }
 
-  function isPivotTaken() {
-    return pivotTaken;
+  function resolveFork() {
+    return world.pivotTaken ? 'act2a' : 'act2b';
   }
 
-  function resolveExit(scene, direction) {
-    const rawExit = scene.exits[direction];
-    if (!rawExit) return null;
-    if (rawExit !== '__fork__') return rawExit;
-    return pivotTaken ? scene.pivot_taken_scene : scene.pivot_skipped_scene;
-  }
-
-  return { loadScene, setPivotTaken, isPivotTaken, resolveExit };
+  return { loadScene, resolveExit, resolveGate, setPivotTaken, isPivotTaken: () => world.pivotTaken, resolveFork };
 }
 
 module.exports = { createSceneManager };
