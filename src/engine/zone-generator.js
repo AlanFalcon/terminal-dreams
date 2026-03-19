@@ -56,7 +56,11 @@ function pickGateDirection(room) {
   // Pick a direction not already used as a real exit
   const usedDirs = new Set(Object.keys(room.exits));
   const open = DIRECTIONS.filter(d => !usedDirs.has(d));
-  return open.length > 0 ? pick(open) : pick(DIRECTIONS.filter(d => !room.exits[d] || room.exits[d].startsWith('__')));
+  if (open.length > 0) return pick(open);
+  const overwritable = DIRECTIONS.filter(d => !room.exits[d] || room.exits[d].startsWith('__'));
+  if (overwritable.length > 0) return pick(overwritable);
+  // All 4 directions have real exits — overwrite one
+  return pick(DIRECTIONS);
 }
 
 function resolveAdjacent(rooms, roomIdx, latent) {
@@ -90,7 +94,13 @@ function createZoneGenerator(roomTypes) {
   function generateZone(zoneId, world, roomCount) {
     const act = ACT_NUMBER[zoneId] || 1;
     const isTerminal = zoneId === 'act3';
-    const gateToken = isTerminal ? '__complete__' : `__gate_${zoneId === 'act1' ? 'act2' : 'act3'}__`;
+    const GATE_TOKEN = {
+      act1: '__gate_act2__',
+      act2a: '__gate_act3__',
+      act2b: '__gate_act3__',
+      act3: '__complete__',
+    };
+    const gateToken = GATE_TOKEN[zoneId] || '__complete__';
 
     // 1. Build grid
     const nodes = drunkWalk(roomCount);
