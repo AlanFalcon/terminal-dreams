@@ -1,0 +1,23 @@
+{
+  "type": "pit",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a {ADJ} object has lodged in a crack in the pit wall, just within reach — it was not dropped accidentally; the angle is wrong",
+      "hint": "add_item",
+      "item": "caught object",
+      "item_desc": "A {ADJ} item, lodged on a ledge within the pit. It has been here a very long time."
+    },
+    {
+      "fact": "the bottom is not visible — the pit is deeper than the light reaches",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a narrow ledge passage around the inner edge, invisible from the lip",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "A ledge around the pit's edge becomes visible as you lean inward.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

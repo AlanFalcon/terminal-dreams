@@ -1,0 +1,23 @@
+{
+  "type": "vault",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "an overlooked item not worth securing",
+      "hint": "add_item",
+      "item": "abandoned possession",
+      "item_desc": "A {ADJ} item, left in the vault but not locked away. Too valueless to secure, or too important to be seen?"
+    },
+    {
+      "fact": "the vault was not forced — it was opened from the inside",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a secondary compartment behind the main one, keyed differently",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The hidden compartment opens, revealing deeper chambers beyond.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

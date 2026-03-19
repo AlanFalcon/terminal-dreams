@@ -1,0 +1,23 @@
+{
+  "type": "forge",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a small object cast in the most recent firing",
+      "hint": "add_item",
+      "item": "freshly cast object",
+      "item_desc": "A {ADJ} piece, still warm from the furnace. The craftsmanship is exceptional."
+    },
+    {
+      "fact": "the coals are still warm — something was made here within the last few hours",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a cooling tunnel beneath the furnace floor, sized for a body",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The tunnel beneath the furnace leads downward and onward.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

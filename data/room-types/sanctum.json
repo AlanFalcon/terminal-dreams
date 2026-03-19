@@ -1,0 +1,23 @@
+{
+  "type": "sanctum",
+  "tiles": ["character", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a {ADJ} personal item has been placed at the exact centre of the room — not displayed, not hidden, just placed, as if the act of placing it mattered",
+      "hint": "add_item",
+      "item": "personal memento",
+      "item_desc": "A {ADJ} item, clearly meant to be kept safe. It smells of {CHARACTER}."
+    },
+    {
+      "fact": "the silence here is not natural — it absorbs sound rather than reflecting it",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a secondary exit concealed behind ritual objects, visible only from within",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "Behind the objects, a passage opens to somewhere unseen.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

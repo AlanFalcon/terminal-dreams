@@ -1,15 +1,15 @@
-// src/engine/session.js
 const { createSceneManager } = require('./scene-manager');
 const { processCommand } = require('./command-processor');
 const { generateWorld } = require('./world-generator');
 const { bold, dim, clear, renderInventory } = require('../interfaces/render');
 
 const STATES = { LOADING: 'loading', PLAYING: 'playing', COMPLETE: 'complete', LOST: 'lost' };
-
 const HELP_TEXT = 'Commands: look | go [direction] | take [item] | talk to [character] | use [item]';
 
-function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memorialGenerator, tileLibrary, tileCompositor, tileGenerator, latentsProcessor }) {
-  const world = generateWorld();
+function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memorialGenerator,
+  tileLibrary, tileCompositor, tileGenerator, latentsProcessor, zoneGenerator, descriptionGenerator, world: injectedWorld }) {
+
+  const world = injectedWorld || generateWorld(zoneGenerator);
   const sceneManager = createSceneManager(world);
 
   let state = STATES.LOADING;
@@ -27,7 +27,6 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
     } else if (effect.type === 'unlock_exit') {
       currentScene.exits[effect.exit] = effect.target_scene;
     }
-    // npc_note and nothing: no state change
   }
 
   async function renderScene(scene) {
@@ -36,7 +35,7 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
     const tileContents = tilePaths.map(p => tileLibrary.loadTile(p));
     const art = tileCompositor.compositeTiles(tileContents);
 
-    onOutput(clear()); // clear screen
+    onOutput(clear());
     onOutput(art + '\n\n');
     onOutput(bold(world.name) + '\n\n');
     onOutput(scene.description + '\n\n');
@@ -45,14 +44,38 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
     onOutput(dim(HELP_TEXT) + '\n');
     onOutput('> ');
 
-    // Background: maybe generate new tile (fire and forget)
     tileGenerator.maybeGenerateTile({ genres: genreNames, sceneType: scene.tiles[0] }).catch(() => {});
+  }
+
+  async function fillDescriptions(zone) {
+    await Promise.all(zone.rooms.map(async room => {
+      if (!room.description) {
+        const desc = await descriptionGenerator.generateDescription(room, world);
+        room.description = desc;
+        room.commands.look = desc;
+      }
+    }));
+    zone.status = 'ready';
+  }
+
+  async function generateNextZone(zoneId) {
+    const roomCount = 5 + Math.floor(Math.random() * 3);
+    const zone = zoneGenerator.generateZone(zoneId, world, roomCount);
+    world.zones[zoneId] = zone;
+    await fillDescriptions(zone);
+    return zone;
+  }
+
+  function startBackgroundZoneGeneration(zoneId) {
+    world.pendingZone = generateNextZone(zoneId).catch(() => {});
   }
 
   async function start() {
     onOutput(clear());
     onOutput('A world is being assembled for you.\nDo not disconnect until the story ends.\n\n');
-    currentScene = sceneManager.loadScene('act1-scene1');
+    await fillDescriptions(world.zones.act1);
+    currentScene = sceneManager.loadScene(world.zones.act1.startRoomId);
+    world.visitedRoomIds.add(currentScene.id);
     state = STATES.PLAYING;
     await renderScene(currentScene);
   }
@@ -63,12 +86,14 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
     if (!trimmed) { onOutput('> '); return; }
 
     const normalized = trimmed.toLowerCase();
-    commandHistory = [...commandHistory.slice(-19), trimmed]; // keep original casing in history display
+    commandHistory = [...commandHistory.slice(-19), trimmed];
 
     const result = processCommand(normalized, currentScene);
 
-    if (result.pivotTaken) {
+    if (result.pivotTaken && !world.pivotTaken) {
       sceneManager.setPivotTaken(true);
+      const act2ZoneId = sceneManager.resolveFork();
+      startBackgroundZoneGeneration(act2ZoneId);
     }
 
     if (result.type === 'response') {
@@ -77,10 +102,52 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
     }
 
     if (result.type === 'exit') {
-      const nextId = sceneManager.resolveExit(currentScene, result.direction);
-      if (!nextId) { onOutput('\nYou cannot go that way.\n\n> '); return; }
-      if (nextId === '__complete__') { await complete(); return; }
-      currentScene = sceneManager.loadScene(nextId);
+      const raw = sceneManager.resolveExit(currentScene, result.direction);
+
+      if (raw && raw.startsWith('__gate_')) {
+        let nextRoomId = sceneManager.resolveGate(currentScene, result.direction, world);
+        if (nextRoomId === null) { onOutput('\nYou cannot go that way.\n\n> '); return; }
+        if (nextRoomId === '__stall__') {
+          onOutput('\nThe passage holds for a moment...\n');
+          for (let i = 0; i < 3 && nextRoomId === '__stall__'; i++) {
+            await new Promise(r => setTimeout(r, 1000));
+            if (world.pendingZone) await world.pendingZone;
+            nextRoomId = sceneManager.resolveGate(currentScene, result.direction, world);
+          }
+          if (nextRoomId === '__stall__') {
+            // Fallback: force open. gateTarget is guaranteed set here — resolveGate only
+            // returns '__stall__' when gateTarget is non-null (null gateTarget returns null).
+            const gateTarget = currentScene.gateTarget;
+            nextRoomId = world.zones[gateTarget]?.startRoomId || null;
+          }
+        }
+        if (!nextRoomId) { onOutput('\nYou cannot go that way.\n\n> '); return; }
+        // Zone transition
+        world.discoveredLatents = 0;
+        currentScene = sceneManager.loadScene(nextRoomId);
+        world.visitedRoomIds.add(currentScene.id);
+        latentConversation = [];
+        // Wire up gateTarget on the new zone's gate room, then start background generation
+        const newZoneId = currentScene.id.split('-r')[0];
+        const newZone = world.zones[newZoneId];
+        const nextZoneForward = { act2a: 'act3', act2b: 'act3' }[newZoneId];
+        if (nextZoneForward && newZone) {
+          const newGateRoom = newZone.rooms.find(r => r.isGate);
+          if (newGateRoom && !newGateRoom.gateTarget) {
+            newGateRoom.gateTarget = nextZoneForward;
+            world.pendingZone = null; // reset before starting next
+            startBackgroundZoneGeneration(nextZoneForward);
+          }
+        }
+        await renderScene(currentScene);
+        return;
+      }
+
+      if (raw === '__complete__') { await complete(); return; }
+      if (!raw) { onOutput('\nYou cannot go that way.\n\n> '); return; }
+
+      currentScene = sceneManager.loadScene(raw);
+      world.visitedRoomIds.add(currentScene.id);
       latentConversation = [];
       await renderScene(currentScene);
       return;
@@ -89,14 +156,18 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
     if (result.type === 'unknown') {
       if (latentsProcessor && currentScene.latents && currentScene.latents.length > 0) {
         const { text, effect } = await latentsProcessor.process(normalized, currentScene, latentConversation);
-        applyEffect(effect);
+        if (effect) {
+          applyEffect(effect);
+          world.discoveredLatents++;
+        }
         latentConversation = [...latentConversation.slice(-9), { command: normalized, response: text }];
         onOutput('\n' + text + '\n\n');
         if (effect && effect.type === 'exit') {
-          const nextId = sceneManager.resolveExit(currentScene, effect.direction);
-          if (nextId === '__complete__') { await complete(); return; }
-          if (nextId) {
-            currentScene = sceneManager.loadScene(nextId);
+          const raw2 = sceneManager.resolveExit(currentScene, effect.direction);
+          if (raw2 === '__complete__') { await complete(); return; }
+          if (raw2 && !raw2.startsWith('__gate_')) {
+            currentScene = sceneManager.loadScene(raw2);
+            world.visitedRoomIds.add(currentScene.id);
             latentConversation = [];
             await renderScene(currentScene);
             return;
@@ -116,7 +187,7 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
     await graveyardStore.writeCompleted({
       worldName: world.name,
       genres: world.genres.map(g => g.name),
-      scenes: 10,
+      rooms: world.visitedRoomIds.size,
       timestamp: new Date().toISOString(),
     });
     onComplete(id);

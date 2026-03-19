@@ -1,0 +1,23 @@
+{
+  "type": "market",
+  "tiles": ["location", "character"],
+  "latents": [
+    {
+      "fact": "something left on the stall, unpaid for",
+      "hint": "add_item",
+      "item": "unclaimed merchandise",
+      "item_desc": "A {ADJ} item on the stall counter. No one came back for it."
+    },
+    {
+      "fact": "the goods have shifted meaning — what was sold here is not what it appears",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a back entrance through the stalls, used for deliveries",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The delivery passage opens behind the stalls.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

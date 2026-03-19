@@ -3,3 +3,4 @@ node_modules/
 .ssh/
 npm-debug.log*
 package-lock.json
+.worktrees/

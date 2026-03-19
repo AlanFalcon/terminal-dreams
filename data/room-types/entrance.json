@@ -1,0 +1,23 @@
+{
+  "type": "entrance",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a {ADJ} keycard is wedged under the lip of the threshold — someone slid it there before the door sealed",
+      "hint": "add_item",
+      "item": "keycard",
+      "item_desc": "A {ADJ} keycard, scratched. The name on it has been scored out."
+    },
+    {
+      "fact": "the {CHARACTER} left marks on the doorframe — notches, possibly a count, possibly a warning",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a panel beside the door is slightly proud of the wall — it depresses with pressure",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "A narrow passage opens in the wall.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

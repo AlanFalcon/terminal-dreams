@@ -1,0 +1,23 @@
+{
+  "type": "watchtower",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a {ADJ} sighting device is mounted on a bracket inside the tower, angled at something below — whatever it tracks is not the expected view",
+      "hint": "add_item",
+      "item": "sighting apparatus",
+      "item_desc": "A {ADJ} device for measuring distance or signalling. It is calibrated for targets that no longer exist."
+    },
+    {
+      "fact": "the view from up here is wrong — something large has moved since the tower was built",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a rope or bracket ladder down the exterior face",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The ladder leads down the outer wall to a passage below.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

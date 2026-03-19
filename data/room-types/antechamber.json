@@ -1,0 +1,23 @@
+{
+  "type": "antechamber",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a {ADJ} object has been left on one of the waiting chairs — positioned carefully, as if the owner intended to return",
+      "hint": "add_item",
+      "item": "forgotten possession",
+      "item_desc": "A {ADJ} item, left on a bench. Someone forgot it during their wait here."
+    },
+    {
+      "fact": "whoever waited here left in a hurry — the queue number is still in their seat",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a door at the far end of the waiting area, never used",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The sealed door finally yields.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

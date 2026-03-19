@@ -1,0 +1,23 @@
+{
+  "type": "observatory",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a {ADJ} chart has been folded and tucked under the base of the main instrument — the annotations on it are not in any standard notation",
+      "hint": "add_item",
+      "item": "viewing instrument",
+      "item_desc": "A {ADJ} instrument for measuring distance or direction. It still holds a record of what it saw."
+    },
+    {
+      "fact": "the instruments are still tracking — whatever they are pointed at has moved",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a hatch in the floor leads to the level below",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The hatch swings open to reveal stairs descending.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

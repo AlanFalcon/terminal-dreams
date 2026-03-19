@@ -1,0 +1,23 @@
+{
+  "type": "infirmary",
+  "tiles": ["character", "location"],
+  "latents": [
+    {
+      "fact": "a {ADJ} instrument has been pushed to the back of a drawer and half-covered with a cloth — not stored, hidden",
+      "hint": "add_item",
+      "item": "medical implement",
+      "item_desc": "A {ADJ} instrument or container, left among the medical supplies. It does not belong here."
+    },
+    {
+      "fact": "the charts are still being updated — by something that cannot be present",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a service corridor behind the ward, for those who should not be seen",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "A passage behind the ward opens to somewhere private.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

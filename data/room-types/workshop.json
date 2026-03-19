@@ -1,0 +1,23 @@
+{
+  "type": "workshop",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a tool or component left mid-task",
+      "hint": "add_item",
+      "item": "half-finished component",
+      "item_desc": "A {ADJ} piece, clearly in progress. Whoever left it means to return."
+    },
+    {
+      "fact": "the project is almost recognisable — another hour of work and it would be clear what it was",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a connecting passage through the bench, behind a panel of stored stock",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The panel slides aside, revealing a passage through the workstation.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

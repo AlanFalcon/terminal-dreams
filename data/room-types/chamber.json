@@ -1,0 +1,23 @@
+{
+  "type": "chamber",
+  "tiles": ["location", "character"],
+  "latents": [
+    {
+      "fact": "a {ADJ} token or badge has fallen behind the main fixture — easily missed",
+      "hint": "add_item",
+      "item": "identification token",
+      "item_desc": "A {ADJ} token stamped with a symbol you don't recognise. Still warm."
+    },
+    {
+      "fact": "the {ANTAGONIST} has been here — there is residue on the floor that matches the {THREAT}",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "behind the {ADJ} fixture, a maintenance hatch has been forced open and left ajar",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "A maintenance passage beyond the hatch.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

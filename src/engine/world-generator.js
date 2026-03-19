@@ -54,11 +54,25 @@ function fillSlot(slotType, activeGenres) {
   return [...modifiers, base].join(' ');
 }
 
-function generateWorld() {
+function generateWorld(zoneGenerator) {
   const genres = loadGenres();
   const activeGenres = selectGenres(genres);
   const name = generateWorldName(activeGenres);
-  return { name, genres: activeGenres };
+
+  const world = {
+    name,
+    genres: activeGenres,
+    zones: { act1: null, act2a: null, act2b: null, act3: null },
+    pivotTaken: false,
+    discoveredLatents: 0,
+    visitedRoomIds: new Set(),
+    pendingZone: null,
+  };
+
+  const roomCount = 5 + Math.floor(Math.random() * 3);
+  world.zones.act1 = zoneGenerator.generateZone('act1', world, roomCount);
+
+  return world;
 }
 
 module.exports = { loadGenres, selectGenres, generateWorldName, fillSlot, generateWorld };

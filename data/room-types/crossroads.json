@@ -1,0 +1,23 @@
+{
+  "type": "crossroads",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a coin or disc has been left at the exact centre of the junction — placed deliberately, face down",
+      "hint": "add_item",
+      "item": "waymarker disc",
+      "item_desc": "A {ADJ} disc, heavier than it looks. One side is blank. The other shows a path."
+    },
+    {
+      "fact": "someone has scratched a direction into the floor at the junction — it points nowhere useful",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "one of the four passages has been partially blocked — but the blockage moves if you push it correctly",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The passage clears. Something waits beyond.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

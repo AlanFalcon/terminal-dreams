@@ -1,0 +1,23 @@
+{
+  "type": "armory",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a weapon or tool that was missed in the inventory",
+      "hint": "add_item",
+      "item": "overlooked weapon",
+      "item_desc": "A {ADJ} tool or weapon, hidden among the racks. It was deliberately missed during the inventory."
+    },
+    {
+      "fact": "the racks were emptied selectively — whoever took what they needed knew exactly where to look",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a supply tunnel to an adjacent area, sized for moving equipment",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The supply tunnel opens, wide enough to move heavy gear through.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

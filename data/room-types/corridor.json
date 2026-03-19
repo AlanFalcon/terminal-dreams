@@ -1,0 +1,23 @@
+{
+  "type": "corridor",
+  "tiles": ["atmosphere", "location"],
+  "latents": [
+    {
+      "fact": "a {ADJ} lens from some kind of optical device has been dropped and rolled against the baseboard",
+      "hint": "add_item",
+      "item": "cracked lens",
+      "item_desc": "A {ADJ} lens, cracked diagonally. Shapes look wrong through it."
+    },
+    {
+      "fact": "the walls are scored with parallel lines at irregular intervals — someone was measuring something, or counting time",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a section of panelling on the {ADJ} wall sounds hollow — it gives slightly under pressure",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "A gap behind the panelling leads somewhere quieter.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

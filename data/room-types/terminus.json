@@ -1,0 +1,23 @@
+{
+  "type": "terminus",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a ticket, manifest, or logbook",
+      "hint": "add_item",
+      "item": "transit record",
+      "item_desc": "A {ADJ} document, detailing routes no longer travelled. The schedules are obsolete."
+    },
+    {
+      "fact": "the line this terminus served no longer runs — but the timetable is still being updated",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a maintenance access door at the far end of the platform, keyed",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The access door at the platform's end opens to passages beyond.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

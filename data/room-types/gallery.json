@@ -1,0 +1,23 @@
+{
+  "type": "gallery",
+  "tiles": ["location", "character"],
+  "latents": [
+    {
+      "fact": "an object removed from its designated display",
+      "hint": "add_item",
+      "item": "displaced artifact",
+      "item_desc": "A {ADJ} piece, now detached from its display. Its absence speaks volumes."
+    },
+    {
+      "fact": "the pieces here are arranged in an order that tells a sequence — reading it is unsettling",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a service passage behind one of the display cases, for restorers",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "A passage between the cases leads deeper into the gallery.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "archive",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a record or document that should not exist",
+      "hint": "add_item",
+      "item": "forbidden record",
+      "item_desc": "A {ADJ} document, filed but never meant to be found. Its content raises questions."
+    },
+    {
+      "fact": "the index refers to itself — the catalogue is its own subject",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a restricted section behind a filing unit on a track",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The filing unit slides aside, revealing a sealed archive beyond.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

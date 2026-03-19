@@ -1,0 +1,23 @@
+{
+  "type": "dock",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a {ADJ} navigation instrument has been left on the dock boards — still set to a heading, as if the operator stepped away mid-course",
+      "hint": "add_item",
+      "item": "mooring equipment",
+      "item_desc": "A {ADJ} nautical implement, cast aside. It still carries the tang of {CHARACTER}."
+    },
+    {
+      "fact": "the moorings still hold — whatever was tethered here has simply gone slack",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a ladder bracket down to the level below the waterline",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The ladder descends below the waterline to passages hidden below.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

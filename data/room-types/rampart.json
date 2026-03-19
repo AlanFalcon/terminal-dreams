@@ -1,0 +1,23 @@
+{
+  "type": "rampart",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a {ADJ} signalling device has been left against the parapet wall, pointed inward rather than out — whatever it was aimed at is inside the structure",
+      "hint": "add_item",
+      "item": "signalling apparatus",
+      "item_desc": "A {ADJ} device for signalling or observation. It is still set for a message no one sends anymore."
+    },
+    {
+      "fact": "the wind carries a voice — or the shape of one — periodically and without source",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a rope or bracket ladder down the outer face, below the parapet",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The ladder descends the outer face to passages below the wall.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

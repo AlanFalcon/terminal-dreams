@@ -1,0 +1,23 @@
+{
+  "type": "shrine",
+  "tiles": ["character", "location"],
+  "latents": [
+    {
+      "fact": "the offering left most recently — still fresh",
+      "hint": "add_item",
+      "item": "recent offering",
+      "item_desc": "A {ADJ} object, left as an offering. It is still at the peak of freshness."
+    },
+    {
+      "fact": "the focal object is not what the shrine was originally built for",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a concealed compartment behind the focal object, for the previous one",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "Behind the focal object, a compartment opens to deeper chambers.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

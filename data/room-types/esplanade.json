@@ -1,0 +1,23 @@
+{
+  "type": "esplanade",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a {ADJ} personal effect lies in the middle of the promenade — too valuable to abandon casually, too specific to be an accident",
+      "hint": "add_item",
+      "item": "abandoned personal item",
+      "item_desc": "A {ADJ} object, dropped and left behind. The crowd moved on without it."
+    },
+    {
+      "fact": "the noise of the crowd has not faded — it is not an echo, it is still happening",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a service gate set into the perimeter wall, not visible from the promenade",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The service gate opens into passages beyond the perimeter.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}
