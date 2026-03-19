@@ -122,13 +122,15 @@ describe('session.command() — basic', () => {
 
 describe('session.command() — normal navigation', () => {
   it('moves to the next room on go north', async () => {
+    const fakeWorld = makeFakeWorld();
     const onOutput = jest.fn();
-    const session = makeSession({ onOutput });
+    const session = makeSession({ onOutput, world: fakeWorld });
     await session.start();
     onOutput.mockClear();
     await session.command('go north');
     const output = onOutput.mock.calls.map(c => c[0]).join('');
     expect(output).not.toContain('cannot go that way');
+    expect(fakeWorld.visitedRoomIds.has('act1-r1')).toBe(true);
   });
 
   it('resets latentConversation on room change', async () => {

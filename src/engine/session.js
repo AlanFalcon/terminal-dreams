@@ -115,7 +115,8 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
             nextRoomId = sceneManager.resolveGate(currentScene, result.direction, world);
           }
           if (nextRoomId === '__stall__') {
-            // Fallback: force open
+            // Fallback: force open. gateTarget is guaranteed set here — resolveGate only
+            // returns '__stall__' when gateTarget is non-null (null gateTarget returns null).
             const gateTarget = currentScene.gateTarget;
             nextRoomId = world.zones[gateTarget]?.startRoomId || null;
           }
