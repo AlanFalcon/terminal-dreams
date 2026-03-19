@@ -9,7 +9,7 @@ function createSceneManager(world) {
   }
 
   function resolveExit(room, direction) {
-    const raw = room.exits[direction];
+    const raw = room.exits?.[direction];
     if (!raw) return null;
     return raw; // room id, __complete__, __gate_*, or __gate_unlocked__
   }
@@ -46,7 +46,11 @@ function createSceneManager(world) {
     const act1 = world.zones.act1;
     if (act1) {
       const gateRoom = act1.rooms.find(r => r.isGate);
-      if (gateRoom) gateRoom.gateTarget = value ? 'act2a' : 'act2b';
+      if (gateRoom) {
+        gateRoom.gateTarget = value ? 'act2a' : 'act2b';
+      } else {
+        console.warn('setPivotTaken: act1 gate room not found — world state may be inconsistent');
+      }
     }
   }
 

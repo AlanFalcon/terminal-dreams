@@ -71,7 +71,7 @@ describe('resolveExit', () => {
 
   it('returns __complete__ for the terminal exit', () => {
     const r = makeRoom({ id: 'act3-r0', exits: { north: '__complete__' } });
-    const world = { zones: { act1: null, act2a: null, act2b: null, act3: { id: 'act3', rooms: [r], startRoomId: 'act3-r0', status: 'ready' } }, pivotTaken: false, discoveredLatents: 0, visitedRoomIds: new Set(), pendingZone: null };
+    const world = makeWorld({ zones: { ...makeWorld().zones, act3: { id: 'act3', rooms: [r], startRoomId: 'act3-r0', status: 'ready' } } });
     const manager = createSceneManager(world);
     expect(manager.resolveExit(r, 'north')).toBe('__complete__');
   });
@@ -95,6 +95,13 @@ describe('resolveGate — open mechanic', () => {
     const gateRoom = makeRoom({ isGate: true, gateMechanic: 'open', gateTarget: 'act2a' });
     const manager = createSceneManager(world);
     expect(manager.resolveGate(gateRoom, 'west', world)).toBe('__stall__');
+  });
+
+  it('returns null when zone slot is null and no pending', () => {
+    const room = makeRoom({ gateMechanic: 'open', gateTarget: 'act2a' });
+    const world = makeWorld({ pendingZone: null, zones: { act1: null, act2a: null, act2b: null, act3: null } });
+    const manager = createSceneManager(world);
+    expect(manager.resolveGate(room, 'north', world)).toBeNull();
   });
 });
 
