@@ -45,6 +45,10 @@ function createWebServer({ port, deps }) {
     let session = null;
     let firstMessage = true;
 
+    const pingTimer = setInterval(() => {
+      if (ws.readyState === WebSocket.OPEN) ws.ping();
+    }, 30000);
+
     ws.on('message', async (data) => {
       const text = data.toString().trim();
 
@@ -83,6 +87,7 @@ function createWebServer({ port, deps }) {
     });
 
     ws.on('close', () => {
+      clearInterval(pingTimer);
       if (!sessionId || !activeSessions.has(sessionId)) return;
       const entry = activeSessions.get(sessionId);
       // Start grace period timer
