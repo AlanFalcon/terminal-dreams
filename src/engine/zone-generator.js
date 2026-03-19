@@ -93,7 +93,6 @@ function createZoneGenerator(roomTypes) {
 
   function generateZone(zoneId, world, roomCount) {
     const act = ACT_NUMBER[zoneId] || 1;
-    const isTerminal = zoneId === 'act3';
     const GATE_TOKEN = {
       act1: '__gate_act2__',
       act2a: '__gate_act3__',
@@ -151,10 +150,10 @@ function createZoneGenerator(roomTypes) {
 
     gateRoom.isGate = true;
     gateRoom.exits[gateDir] = gateToken;
-    gateRoom.gateMechanic = isTerminal ? null : gateMechanic;
+    gateRoom.gateMechanic = zoneId === 'act3' ? null : gateMechanic;
 
     // 6. For narrative gates: inject an unlock_exit latent targeting __gate_unlocked__
-    if (!isTerminal && gateMechanic === 'narrative') {
+    if (zoneId !== 'act3' && gateMechanic === 'narrative') {
       gateRoom.latents.push({
         fact: `something in this ${gateRoom.type} has shifted — a tension in the air that was not here before`,
         hint: 'unlock_exit',
