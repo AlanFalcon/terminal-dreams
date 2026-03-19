@@ -5,6 +5,7 @@ const { createLatentsProcessor } = require('../../src/engine/latents-processor')
 
 const SCENE = {
   description: 'A dim room. Something watches from the corner.',
+  exits: { north: 'act1-scene2' },
   latents: [
     { fact: 'a tarnished coin half-buried in the dust', hint: 'add_item', item: 'tarnished coin', item_desc: 'A worn coin.' },
     { fact: 'the character keeps glancing at the floor panel', hint: 'npc_note' },
@@ -92,6 +93,20 @@ describe('createLatentsProcessor', () => {
     mockClaude({ response: 'A gap appears.', effect: { type: 'unlock_exit', exit: 'east' } });
     const processor = createLatentsProcessor('fake-key');
     const result = await processor.process('push the wall', SCENE, HISTORY);
+    expect(result.effect).toBeNull();
+  });
+
+  it('returns exit effect when Claude fires one', async () => {
+    mockClaude({ response: 'You move north into the dark.', effect: { type: 'exit', direction: 'north' } });
+    const processor = createLatentsProcessor('fake-key');
+    const result = await processor.process('go north', SCENE, HISTORY);
+    expect(result.effect).toEqual({ type: 'exit', direction: 'north' });
+  });
+
+  it('strips exit effect if direction is missing', async () => {
+    mockClaude({ response: 'You move somewhere.', effect: { type: 'exit' } });
+    const processor = createLatentsProcessor('fake-key');
+    const result = await processor.process('go somewhere', SCENE, HISTORY);
     expect(result.effect).toBeNull();
   });
 });

@@ -143,6 +143,23 @@ describe('unknown command routing', () => {
     expect(session.latentConversation).toHaveLength(0);
   });
 
+  it('navigates when latents processor returns exit effect', async () => {
+    const mockProcess = jest.fn().mockResolvedValue({
+      text: 'You slip through the gap and head north.',
+      effect: { type: 'exit', direction: 'north' },
+    });
+    const onOutput = jest.fn();
+    const session = makeSession({ latentsProcessor: { process: mockProcess }, onOutput });
+    await session.start();
+    onOutput.mockClear();
+    await session.command('reach for it and go north');
+    // Should have rendered a new scene (renderScene calls onOutput multiple times)
+    // and NOT shown the '> ' prompt after the narrative (scene render shows its own prompt)
+    const output = onOutput.mock.calls.map(c => c[0]).join('');
+    expect(output).toContain('You slip through the gap and head north.');
+    expect(output).not.toContain('cannot go that way');
+  });
+
   it('does not add duplicate items to inventory', async () => {
     const mockProcess = jest.fn().mockResolvedValue({
       text: 'You find a coin.',

@@ -91,7 +91,18 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
         const { text, effect } = await latentsProcessor.process(normalized, currentScene, latentConversation);
         applyEffect(effect);
         latentConversation = [...latentConversation.slice(-9), { command: normalized, response: text }];
-        onOutput('\n' + text + '\n\n> ');
+        onOutput('\n' + text + '\n\n');
+        if (effect && effect.type === 'exit') {
+          const nextId = sceneManager.resolveExit(currentScene, effect.direction);
+          if (nextId === '__complete__') { await complete(); return; }
+          if (nextId) {
+            currentScene = sceneManager.loadScene(nextId);
+            latentConversation = [];
+            await renderScene(currentScene);
+            return;
+          }
+        }
+        onOutput('> ');
       } else {
         onOutput('\nUnknown command. ' + HELP_TEXT + '\n\n> ');
       }

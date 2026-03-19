@@ -1,7 +1,7 @@
 // src/engine/latents-processor.js
 const Anthropic = require('@anthropic-ai/sdk');
 
-const VALID_EFFECT_TYPES = ['add_item', 'unlock_exit', 'npc_note', 'nothing'];
+const VALID_EFFECT_TYPES = ['add_item', 'unlock_exit', 'npc_note', 'nothing', 'exit'];
 const FALLBACK = { text: 'The moment passes without consequence.', effect: null };
 
 function buildPrompt(command, scene, history) {
@@ -9,6 +9,7 @@ function buildPrompt(command, scene, history) {
   const historyText = history.length
     ? history.map(h => `> ${h.command}\n${h.response}`).join('\n\n')
     : 'None yet.';
+  const exitsText = Object.keys(scene.exits).join(', ') || 'none';
 
   return `You are the hidden layer of a text adventure world.
 
@@ -16,6 +17,8 @@ SCENE: ${scene.description}
 
 LATENT FACTS (the player cannot see these):
 ${factsText}
+
+AVAILABLE EXITS: ${exitsText}
 
 CONVERSATION SO FAR IN THIS SCENE:
 ${historyText}
@@ -25,9 +28,10 @@ PLAYER COMMAND: ${command}
 Decide: does this action interact with any latent fact?
 - If yes: write a response that naturally reveals or develops it. If the interaction reaches a natural conclusion, include an effect.
 - If no: write a brief atmospheric response. No effect.
+- If the action naturally results in moving to a new location (e.g. "go north", "head through the door"), include an exit effect with the direction key.
 
 Respond in JSON only:
-{"response": "narrative text shown to player", "effect": {"type": "add_item|unlock_exit|npc_note|nothing", ...payload} | null}`;
+{"response": "narrative text shown to player", "effect": {"type": "add_item|unlock_exit|npc_note|nothing|exit", ...payload} | null}`;
 }
 
 function validateEffect(effect) {
@@ -35,6 +39,7 @@ function validateEffect(effect) {
   if (!VALID_EFFECT_TYPES.includes(effect.type)) return null;
   if (effect.type === 'add_item' && (!effect.item || !effect.item_desc)) return null;
   if (effect.type === 'unlock_exit' && (!effect.exit || !effect.target_scene)) return null;
+  if (effect.type === 'exit' && !effect.direction) return null;
   return effect;
 }
 
