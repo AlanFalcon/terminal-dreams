@@ -3,7 +3,7 @@
   "tiles": ["location", "atmosphere"],
   "latents": [
     {
-      "fact": "something set aside during the wait",
+      "fact": "a {ADJ} object has been left on one of the waiting chairs — positioned carefully, as if the owner intended to return",
       "hint": "add_item",
       "item": "forgotten possession",
       "item_desc": "A {ADJ} item, left on a bench. Someone forgot it during their wait here."

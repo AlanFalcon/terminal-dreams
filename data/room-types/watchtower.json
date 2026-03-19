@@ -3,7 +3,7 @@
   "tiles": ["location", "atmosphere"],
   "latents": [
     {
-      "fact": "a range-finding tool or signal device",
+      "fact": "a {ADJ} sighting device is mounted on a bracket inside the tower, angled at something below — whatever it tracks is not the expected view",
       "hint": "add_item",
       "item": "sighting apparatus",
       "item_desc": "A {ADJ} device for measuring distance or signalling. It is calibrated for targets that no longer exist."

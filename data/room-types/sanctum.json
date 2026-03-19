@@ -3,7 +3,7 @@
   "tiles": ["character", "atmosphere"],
   "latents": [
     {
-      "fact": "a personal effect left for safekeeping",
+      "fact": "a {ADJ} personal item has been placed at the exact centre of the room — not displayed, not hidden, just placed, as if the act of placing it mattered",
       "hint": "add_item",
       "item": "personal memento",
       "item_desc": "A {ADJ} item, clearly meant to be kept safe. It smells of {CHARACTER}."

@@ -3,7 +3,7 @@
   "tiles": ["location", "atmosphere"],
   "latents": [
     {
-      "fact": "a lens, chart, or measurement tool",
+      "fact": "a {ADJ} chart has been folded and tucked under the base of the main instrument — the annotations on it are not in any standard notation",
       "hint": "add_item",
       "item": "viewing instrument",
       "item_desc": "A {ADJ} instrument for measuring distance or direction. It still holds a record of what it saw."

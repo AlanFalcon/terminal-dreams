@@ -3,7 +3,7 @@
   "tiles": ["location", "atmosphere"],
   "latents": [
     {
-      "fact": "an experimental subject or residual by-product",
+      "fact": "a {ADJ} sample container has been sealed and set apart from the rest — labelled in a hand different from the other labels",
       "hint": "add_item",
       "item": "experimental specimen",
       "item_desc": "A {ADJ} sample, still in its containment vessel. The label on it is dated recently."

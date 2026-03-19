@@ -3,7 +3,7 @@
   "tiles": ["location", "atmosphere"],
   "latents": [
     {
-      "fact": "something dropped and lodged partway down",
+      "fact": "a {ADJ} object has lodged in a crack in the pit wall, just within reach — it was not dropped accidentally; the angle is wrong",
       "hint": "add_item",
       "item": "caught object",
       "item_desc": "A {ADJ} item, lodged on a ledge within the pit. It has been here a very long time."

@@ -3,7 +3,7 @@
   "tiles": ["location", "atmosphere"],
   "latents": [
     {
-      "fact": "something dropped by the crowd",
+      "fact": "a {ADJ} personal effect lies in the middle of the promenade — too valuable to abandon casually, too specific to be an accident",
       "hint": "add_item",
       "item": "abandoned personal item",
       "item_desc": "A {ADJ} object, dropped and left behind. The crowd moved on without it."

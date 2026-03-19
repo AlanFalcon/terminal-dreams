@@ -3,7 +3,7 @@
   "tiles": ["location", "atmosphere"],
   "latents": [
     {
-      "fact": "something that fell from an upper level",
+      "fact": "a {ADJ} item lies on the atrium floor directly below a broken balustrade — the fall was recent, the dust around it undisturbed",
       "hint": "add_item",
       "item": "fallen object",
       "item_desc": "A {ADJ} item, broken by its fall. It came from somewhere above."

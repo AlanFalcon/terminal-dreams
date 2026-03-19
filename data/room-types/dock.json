@@ -3,7 +3,7 @@
   "tiles": ["location", "atmosphere"],
   "latents": [
     {
-      "fact": "rope, a mooring pin, or a navigation tool",
+      "fact": "a {ADJ} navigation instrument has been left on the dock boards — still set to a heading, as if the operator stepped away mid-course",
       "hint": "add_item",
       "item": "mooring equipment",
       "item_desc": "A {ADJ} nautical implement, cast aside. It still carries the tang of {CHARACTER}."

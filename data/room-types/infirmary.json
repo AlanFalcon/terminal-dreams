@@ -3,7 +3,7 @@
   "tiles": ["character", "location"],
   "latents": [
     {
-      "fact": "a medication or instrument",
+      "fact": "a {ADJ} instrument has been pushed to the back of a drawer and half-covered with a cloth — not stored, hidden",
       "hint": "add_item",
       "item": "medical implement",
       "item_desc": "A {ADJ} instrument or container, left among the medical supplies. It does not belong here."

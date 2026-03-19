@@ -3,7 +3,7 @@
   "tiles": ["location", "atmosphere"],
   "latents": [
     {
-      "fact": "something cached here for later retrieval",
+      "fact": "behind a loose stone in the lower wall, a {ADJ} bundle has been tucked — wrapped in cloth, tied tight against damp",
       "hint": "add_item",
       "item": "cached supplies",
       "item_desc": "A {ADJ} item, hidden deliberately. Someone planned to come back for it."

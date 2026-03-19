@@ -3,7 +3,7 @@
   "tiles": ["location", "atmosphere"],
   "latents": [
     {
-      "fact": "a signal device or sighting tool",
+      "fact": "a {ADJ} signalling device has been left against the parapet wall, pointed inward rather than out — whatever it was aimed at is inside the structure",
       "hint": "add_item",
       "item": "signalling apparatus",
       "item_desc": "A {ADJ} device for signalling or observation. It is still set for a message no one sends anymore."
