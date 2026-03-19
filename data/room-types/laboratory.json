@@ -1,0 +1,23 @@
+{
+  "type": "laboratory",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "an experimental subject or residual by-product",
+      "hint": "add_item",
+      "item": "experimental specimen",
+      "item_desc": "A {ADJ} sample, still in its containment vessel. The label on it is dated recently."
+    },
+    {
+      "fact": "the experiment was abandoned mid-step — the controls were not shut down",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a ventilation duct large enough to move through, forced open",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The duct leads to passages unseen above.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

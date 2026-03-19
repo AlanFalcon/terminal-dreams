@@ -1,0 +1,23 @@
+{
+  "type": "threshold",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a toll or offering left at the threshold",
+      "hint": "add_item",
+      "item": "abandoned offering",
+      "item_desc": "A {ADJ} object, placed deliberately at the entry point. Someone wanted something."
+    },
+    {
+      "fact": "the door has been used very recently — the mechanism is still warm",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a mechanism in the doorframe depresses with pressure",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The mechanism yields and a passage opens.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

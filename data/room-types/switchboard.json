@@ -1,0 +1,23 @@
+{
+  "type": "switchboard",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a small component extracted from the board",
+      "hint": "add_item",
+      "item": "disconnected component",
+      "item_desc": "A {ADJ} piece, extracted from the switchboard. Someone was very careful removing it."
+    },
+    {
+      "fact": "most of the labels have been corrected — someone spent time replacing them with wrong ones",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a cable conduit large enough to move through, with a removable panel",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The cable conduit opens, wide enough to pass through.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

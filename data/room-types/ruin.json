@@ -1,0 +1,23 @@
+{
+  "type": "ruin",
+  "tiles": ["atmosphere", "location"],
+  "latents": [
+    {
+      "fact": "under a {ADJ} fragment of collapsed ceiling, something has been preserved — sealed against exposure",
+      "hint": "add_item",
+      "item": "sealed container",
+      "item_desc": "A {ADJ} container, intact despite the collapse. The seal is still good."
+    },
+    {
+      "fact": "the collapse here was not gradual — the damage pattern suggests it happened in one event, quickly",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a gap in the fallen wall is partially hidden by debris — it leads somewhere the collapse missed",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "A passable gap in the rubble.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

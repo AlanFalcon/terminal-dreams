@@ -1,0 +1,23 @@
+{
+  "type": "chapel",
+  "tiles": ["location", "character"],
+  "latents": [
+    {
+      "fact": "a devotional object repurposed for something else",
+      "hint": "add_item",
+      "item": "repurposed artifact",
+      "item_desc": "A {ADJ} object, once sacred. Now it serves a different purpose entirely."
+    },
+    {
+      "fact": "the object of devotion has changed — the new one is not depicted anywhere",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a door behind the altar, bricked in and re-plastered, recently",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The bricked door yields, revealing a passage behind the altar.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

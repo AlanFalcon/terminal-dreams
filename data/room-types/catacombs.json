@@ -1,0 +1,23 @@
+{
+  "type": "catacombs",
+  "tiles": ["character", "location"],
+  "latents": [
+    {
+      "fact": "something interred that was never declared dead",
+      "hint": "add_item",
+      "item": "buried artifact",
+      "item_desc": "A {ADJ} object, interred carefully. The person it belonged to was never officially acknowledged."
+    },
+    {
+      "fact": "the stacking here was intentional — the arrangement follows a pattern, not convenience",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a niche behind a sealed alcove, opened from inside",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The sealed alcove opens to reveal a hidden niche beyond.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

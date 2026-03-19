@@ -1,0 +1,23 @@
+{
+  "type": "atrium",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "something that fell from an upper level",
+      "hint": "add_item",
+      "item": "fallen object",
+      "item_desc": "A {ADJ} item, broken by its fall. It came from somewhere above."
+    },
+    {
+      "fact": "the acoustics are wrong — sound arrives from the wrong direction",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a door hidden at the base of a pillar, painted to match the floor",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The hidden door beneath the pillar swings inward.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

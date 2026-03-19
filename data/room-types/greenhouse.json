@@ -1,0 +1,23 @@
+{
+  "type": "greenhouse",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "a cutting or specimen, still living",
+      "hint": "add_item",
+      "item": "living specimen",
+      "item_desc": "A {ADJ} plant or cutting, still growing. Someone maintained it carefully until recently."
+    },
+    {
+      "fact": "the growth here is wrong — some plants are oriented toward a light source that is not present",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a gap in the glass panels, patched with cloth that tears",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The cloth tears away, revealing a passage through the wall.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

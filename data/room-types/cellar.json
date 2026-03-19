@@ -1,0 +1,23 @@
+{
+  "type": "cellar",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "something cached here for later retrieval",
+      "hint": "add_item",
+      "item": "cached supplies",
+      "item_desc": "A {ADJ} item, hidden deliberately. Someone planned to come back for it."
+    },
+    {
+      "fact": "the smell changes in one corner — different decay, different origin",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a tunnel dug through the floor and concealed with a fitted stone",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The stone lifts away, revealing a passage beneath.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

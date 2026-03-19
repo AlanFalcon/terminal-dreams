@@ -1,0 +1,23 @@
+{
+  "type": "cistern",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "something thrown in that is now retrievable",
+      "hint": "add_item",
+      "item": "submerged artifact",
+      "item_desc": "A {ADJ} object, sitting on the cistern bed. The water has preserved it perfectly."
+    },
+    {
+      "fact": "the reflection is delayed — not by much, but enough to notice",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a maintenance hatch set into the wall at the waterline, sealed with a quarter-turn",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The hatch yields to a quarter-turn, opening to passages beyond.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

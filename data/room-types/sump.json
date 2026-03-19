@@ -1,0 +1,23 @@
+{
+  "type": "sump",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "something that drained here from an unexpected origin",
+      "hint": "add_item",
+      "item": "collected residue",
+      "item_desc": "A {ADJ} mass collected in the sump. Its origin is unclear."
+    },
+    {
+      "fact": "everything drains here eventually — the variety of what has arrived is a record of the whole structure",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a pipe or culvert leading away, large enough to enter",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The culvert leads away into darkness, but it is passable.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}

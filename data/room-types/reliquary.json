@@ -1,0 +1,23 @@
+{
+  "type": "reliquary",
+  "tiles": ["character", "location"],
+  "latents": [
+    {
+      "fact": "a fragment of whatever the reliquary held",
+      "hint": "add_item",
+      "item": "sacred relic",
+      "item_desc": "A {ADJ} fragment, preserved with care. It is older than the reliquary itself."
+    },
+    {
+      "fact": "the display case is built to prevent removal — the engineering suggests something that wanted out",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a concealed compartment below the display platform, for the secondary relic",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The display platform opens to reveal a compartment below.",
+      "target_scene": "__adjacent__"
+    }
+  ]
+}
