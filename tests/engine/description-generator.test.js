@@ -42,11 +42,12 @@ describe('generateDescription', () => {
     const gen = createDescriptionGenerator('test-key');
     await gen.generateDescription(ROOM, WORLD);
     expect(mockCreate).toHaveBeenCalledWith(
-      expect.objectContaining({ model: expect.stringContaining('haiku') })
+      expect.objectContaining({ model: 'claude-haiku-4-5-20251001' })
     );
     const prompt = mockCreate.mock.calls[0][0].messages[0].content;
     expect(prompt).toContain('entrance');
     expect(prompt).toContain('horror');
+    expect(prompt).toContain('Act 1');
   });
 
   it('falls back to generic description on API error', async () => {
