@@ -4,14 +4,15 @@ const Anthropic = require('@anthropic-ai/sdk');
 const VALID_EFFECT_TYPES = ['add_item', 'unlock_exit', 'npc_note', 'nothing', 'exit'];
 const FALLBACK = { text: 'The moment passes without consequence.', effect: null };
 
-function buildPrompt(command, scene, history) {
+function buildPrompt(command, scene, history, genreNames) {
   const factsText = scene.latents.map((l, i) => `${i + 1}. ${l.fact}`).join('\n');
   const historyText = history.length
     ? history.map(h => `> ${h.command}\n${h.response}`).join('\n\n')
     : 'None yet.';
   const exitsText = Object.keys(scene.exits).join(', ') || 'none';
+  const genreText = genreNames && genreNames.length ? genreNames.join(', ') : 'unknown';
 
-  return `You are the hidden layer of a text adventure world.
+  return `You are the hidden layer of a text adventure world. Its active genres are: ${genreText}. Your prose voice, atmosphere, and vocabulary should reflect these genres — not explain them.
 
 SCENE: ${scene.description}
 
@@ -46,12 +47,12 @@ function validateEffect(effect) {
 function createLatentsProcessor(apiKey) {
   const client = new Anthropic({ apiKey });
 
-  async function process(command, scene, history) {
+  async function process(command, scene, history, genreNames) {
     try {
       const message = await client.messages.create({
         model: 'claude-haiku-4-5-20251001',
         max_tokens: 400,
-        messages: [{ role: 'user', content: buildPrompt(command, scene, history) }],
+        messages: [{ role: 'user', content: buildPrompt(command, scene, history, genreNames) }],
       });
       const raw = message.content[0].text.trim().replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '');
       const parsed = JSON.parse(raw);

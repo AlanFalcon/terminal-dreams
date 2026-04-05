@@ -1,7 +1,7 @@
 {
   "LOCATION": ["paper lantern row", "night market alley", "vendor stall at the back", "narrow corridor between stalls", "the end of the walk"],
   "ANTAGONIST": ["the vendor who knows your name", "the stall that was there last night", "the price that isn't money", "the object that knows it's yours"],
-  "MACGUFFIN": ["paper cone of unnamed sweetness", "the thing on the bottom shelf", "the lantern with writing on it", "the thing wrapped in cloth"],
+  "MACGUFFIN": ["unnamed sweetness", "wrapped offering", "inscribed lantern", "cloth-covered weight"],
   "THREAT": ["the market closes at dawn", "the vendor is already packing", "the smell dissipates if you think about it", "the moment passes"],
   "CHARACTER": ["vendor who doesn't bargain", "old woman with warm hands", "the one packing up who isn't", "the vendor who was sad to let her go"],
   "ADJ": ["amber", "warm-lit", "unnamed", "paper-lantern", "slow-swaying", "charred-and-sweet"],

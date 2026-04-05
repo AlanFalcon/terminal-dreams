@@ -1,7 +1,7 @@
 const { createSceneManager } = require('./scene-manager');
 const { processCommand } = require('./command-processor');
 const { generateWorld } = require('./world-generator');
-const { bold, dim, clear, renderInventory } = require('../interfaces/render');
+const { bold, dim, clear, divider, colorize, renderInventory } = require('../interfaces/render');
 
 const STATES = { LOADING: 'loading', PLAYING: 'playing', COMPLETE: 'complete', LOST: 'lost' };
 const HELP_TEXT = 'Commands: look | go [direction] | take [item] | talk to [character] | use [item]';
@@ -35,9 +35,11 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
     const tileContents = tilePaths.map(p => tileLibrary.loadTile(p));
     const art = tileCompositor.compositeTiles(tileContents);
 
+    const primaryGenre = world.genres[0]?.name;
     onOutput(clear());
-    onOutput(art + '\n\n');
-    onOutput(bold(world.name) + '\n\n');
+    onOutput(art + '\n');
+    onOutput(dim(divider()) + '\n\n');
+    onOutput(colorize(bold(world.name), primaryGenre) + '\n\n');
     onOutput(scene.description + '\n\n');
     const inv = renderInventory(inventory);
     if (inv) onOutput(inv + '\n');
@@ -155,7 +157,8 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
 
     if (result.type === 'unknown') {
       if (latentsProcessor && currentScene.latents && currentScene.latents.length > 0) {
-        const { text, effect } = await latentsProcessor.process(normalized, currentScene, latentConversation);
+        const genreNames = world.genres.map(g => g.name);
+        const { text, effect } = await latentsProcessor.process(normalized, currentScene, latentConversation, genreNames);
         if (effect) {
           applyEffect(effect);
           world.discoveredLatents++;
@@ -183,7 +186,11 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
 
   async function complete() {
     state = STATES.COMPLETE;
-    onOutput('\n\n' + bold('The story ends.') + '\n\nCONNECTION CLOSED.\n');
+    const primaryGenre = world.genres[0]?.name;
+    const rooms = world.visitedRoomIds.size;
+    const roomWord = rooms === 1 ? 'room' : 'rooms';
+    onOutput('\n\n' + colorize(bold(world.name), primaryGenre) + '\n');
+    onOutput(dim(`${rooms} ${roomWord} visited. The story ends here.`) + '\n\nCONNECTION CLOSED.\n');
     await graveyardStore.writeCompleted({
       worldName: world.name,
       genres: world.genres.map(g => g.name),
