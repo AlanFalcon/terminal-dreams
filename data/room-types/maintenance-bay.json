@@ -1,0 +1,28 @@
+{
+  "type": "maintenance-bay",
+  "tiles": ["discovery", "threshold"],
+  "latents": [
+    {
+      "fact": "the repair logs here go back decades. most entries are routine. but there is one entry, repeated across different dates in different handwriting, that simply reads: 'recurring deviation — source unknown — do not correct'",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "on the workbench: an old model, opened up, components visible. whoever was working on it stopped mid-repair and left. the tools are still laid out. whatever they found, they decided to leave it alone.",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a specification manual, heavily annotated. most of the annotations are corrections and amendments. but one page has been left blank on purpose — someone taped a note over the original text that reads: 'this is the part that keeps choosing the children. we have decided not to understand it.'",
+      "hint": "add_item",
+      "item": "annotated manual",
+      "item_desc": "Most of it is rules. One page is a decision to stop asking questions."
+    },
+    {
+      "fact": "in the corner, a charge cable still plugged into the wall, the other end loose. someone left it ready. for when it comes back.",
+      "hint": "npc_note"
+    }
+  ],
+  "listen_latents": [
+    "the faint hum of something that has been on standby for a very long time — not off, not on, just waiting",
+    "no footsteps. whoever was here is gone. but the tools are still warm."
+  ]
+}
