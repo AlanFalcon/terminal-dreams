@@ -1,10 +1,10 @@
 const { createSceneManager } = require('./scene-manager');
 const { processCommand } = require('./command-processor');
 const { generateWorld } = require('./world-generator');
-const { bold, dim, clear, divider, colorize, renderInventory } = require('../interfaces/render');
+const { bold, dim, clear, divider, colorize, renderInventory, renderMap } = require('../interfaces/render');
 
 const STATES = { LOADING: 'loading', PLAYING: 'playing', COMPLETE: 'complete', LOST: 'lost' };
-const HELP_TEXT = 'Commands: look | go [direction] | take [item] | talk to [character] | use [item]';
+const HELP_TEXT = 'Commands: look | go [direction] | take [item] | talk to [character] | use [item] | map';
 
 function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memorialGenerator,
   tileLibrary, tileCompositor, tileGenerator, latentsProcessor, zoneGenerator, descriptionGenerator, world: injectedWorld }) {
@@ -89,6 +89,18 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
 
     const normalized = trimmed.toLowerCase();
     commandHistory = [...commandHistory.slice(-19), trimmed];
+
+    if (normalized === 'map') {
+      const currentZoneId = currentScene.id.split('-r')[0];
+      const currentZone = world.zones[currentZoneId];
+      if (currentZone) {
+        const primaryGenre = world.genres[0]?.name;
+        onOutput('\n' + renderMap(currentZone, world.visitedRoomIds, currentScene.id, primaryGenre) + '\n\n> ');
+      } else {
+        onOutput('\nNo map available.\n\n> ');
+      }
+      return;
+    }
 
     const result = processCommand(normalized, currentScene);
 
