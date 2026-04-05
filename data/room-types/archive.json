@@ -13,6 +13,10 @@
       "hint": "npc_note"
     },
     {
+      "fact": "a faint sound of pages turning, though no one is here and no air is moving",
+      "hint": "npc_note"
+    },
+    {
       "fact": "a restricted section behind a filing unit on a track",
       "hint": "unlock_exit",
       "exit": "east",

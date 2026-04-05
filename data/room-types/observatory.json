@@ -13,6 +13,10 @@
       "hint": "npc_note"
     },
     {
+      "fact": "a low frequency hum, too low to be mechanical — it seems to come from the dome itself, as if the structure is resonating with something far away",
+      "hint": "npc_note"
+    },
+    {
       "fact": "a hatch in the floor leads to the level below",
       "hint": "unlock_exit",
       "exit": "east",

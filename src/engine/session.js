@@ -13,6 +13,10 @@ const STILLNESS = {
   wait:   `wait — the player has gone still. They are not acting. What does this place do when no one is moving? Let the world breathe around them.`,
   listen: `listen — the player closes their eyes and only listens. What sounds does this place make? What does the silence here contain?`,
   sit:    `sit — the player sits down. The perspective lowers. What does this place look like from here?`,
+  // 'look' on a second visit: not a new action but a deeper one. Reveal something
+  // small and specific that wasn't in the initial description. The player is paying
+  // attention now. Let the room acknowledge that.
+  look:   `look — the player looks around again, more carefully. They have already seen this place once. What do they notice now that they missed before? Something small. A detail. Not a new plot point — just the world being more specific with someone who is paying attention.`,
 };
 
 // Fallback text for stillness commands when there are no latents to engage.
@@ -20,6 +24,7 @@ const STILLNESS_FALLBACK = {
   wait:   (scene) => `The ${scene.type} continues around you. Time moves, though it is difficult to say in which direction.`,
   listen: (scene) => `You listen. The ${scene.type} offers its particular silence — the kind that has texture if you stay with it long enough.`,
   sit:    (scene) => `You sit. The ${scene.type} accommodates you. This is enough.`,
+  look:   (scene) => `You look again. The ${scene.type} is exactly as it was. Either nothing has changed, or you are not yet looking at the right thing.`,
 };
 
 function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memorialGenerator,
@@ -33,6 +38,10 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
   let commandHistory = [];
   let inventory = [];
   let latentConversation = [];
+  // Tracks rooms where the player has already explicitly typed 'look' once.
+  // First 'look' = cached description (same as on entry). Second+ = latents processor.
+  // Resets on room change — the look-count is per-visit, not per-lifetime.
+  const lookedRoomIds = new Set();
 
   function applyEffect(effect) {
     if (!effect) return;
@@ -106,6 +115,28 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
     const normalized = trimmed.toLowerCase();
     commandHistory = [...commandHistory.slice(-19), trimmed];
 
+    // Second+ look in the same room: route to latents processor instead of cached description.
+    // First look gets the pre-generated two-sentence description (same as on entry).
+    // After that, looking harder finds something new — or doesn't, if the room is bare.
+    if (normalized === 'look') {
+      if (lookedRoomIds.has(currentScene.id)) {
+        // Already looked here — try to find a detail
+        if (latentsProcessor && currentScene.latents && currentScene.latents.length > 0) {
+          const genreNames = world.genres.map(g => g.name);
+          const { text, effect } = await latentsProcessor.process(STILLNESS.look, currentScene, latentConversation, genreNames);
+          if (effect) { applyEffect(effect); world.discoveredLatents++; }
+          latentConversation = [...latentConversation.slice(-9), { command: 'look', response: text }];
+          onOutput('\n' + text + '\n\n> ');
+        } else {
+          onOutput('\n' + STILLNESS_FALLBACK.look(currentScene) + '\n\n> ');
+        }
+        return;
+      } else {
+        // First explicit look — mark it, fall through to processCommand for the cached description
+        lookedRoomIds.add(currentScene.id);
+      }
+    }
+
     if (normalized === 'map') {
       const currentZoneId = currentScene.id.split('-r')[0];
       const currentZone = world.zones[currentZoneId];
@@ -157,6 +188,7 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
         currentScene = sceneManager.loadScene(nextRoomId);
         world.visitedRoomIds.add(currentScene.id);
         latentConversation = [];
+        lookedRoomIds.delete(currentScene.id);
         // Wire up gateTarget on the new zone's gate room, then start background generation
         const newZoneId = currentScene.id.split('-r')[0];
         const newZone = world.zones[newZoneId];
@@ -203,6 +235,7 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
             currentScene = sceneManager.loadScene(raw2);
             world.visitedRoomIds.add(currentScene.id);
             latentConversation = [];
+        lookedRoomIds.delete(currentScene.id);
             await renderScene(currentScene);
             return;
           }

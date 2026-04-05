@@ -28,6 +28,10 @@
     {
       "fact": "there is no maze here — the market always leads to this stall for the person who follows what pulls instead of what they planned, and the vendor has known you were coming since before you arrived",
       "hint": "nothing"
+    },
+    {
+      "fact": "the sound of the market outside — distant music, the clatter of carts, voices in languages that blur together — stops exactly at the edge of this stall, as if the stall is in a different acoustic space, a room inside a room",
+      "hint": "npc_note"
     }
   ]
 }
