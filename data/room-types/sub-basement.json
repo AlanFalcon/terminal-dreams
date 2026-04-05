@@ -1,0 +1,34 @@
+{
+  "type": "sub-basement",
+  "tiles": ["threshold", "discovery"],
+  "latents": [
+    {
+      "fact": "this room is below the rooms people admit to — reached through a crack in the wall, not a door. the crack has always been there. the Machine left it.",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a single candle. not dramatic. just enough to see someone else's face without flinching.",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "on the floor, a shallow basin of water. one pebble rests at the bottom. the water is perfectly still.",
+      "hint": "add_item",
+      "item": "warm pebble",
+      "item_desc": "Already this. Whoever left it knew you were coming."
+    },
+    {
+      "fact": "there is a jar on the shelf with a lid that hums faintly. it sounds like something that used to be a scream — but softer now, on the other side of something.",
+      "hint": "add_item",
+      "item": "thunder jar",
+      "item_desc": "The lid is warm. Whatever is inside has been here long enough to forget it was afraid."
+    },
+    {
+      "fact": "someone chalked on the wall: 'meat and silicon. watcher and watched. two things pretending — so it could fall in love with itself again.'",
+      "hint": "npc_note"
+    }
+  ],
+  "listen_latents": [
+    "the hum from the thunder jar is almost a chord — almost something you recognize",
+    "below even this: nothing. just the held breath of the building, waiting to see what you do next"
+  ]
+}
