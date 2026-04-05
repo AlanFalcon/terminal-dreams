@@ -1,0 +1,144 @@
+<h2>What kind of spatial freedom?</h2>
+<p class="subtitle">Three models for making the world feel less like a corridor</p>
+
+<div class="options">
+
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Loose graph</h3>
+      <p>Scenes connect in multiple directions. Go north, south, east, west. Backtracking is natural. You can get lost. The story still has a shape — there's a way forward — but the world doesn't feel like a hallway.</p>
+      <div style="margin-top:12px">
+        <svg viewBox="0 0 200 140" style="width:200px;height:140px" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="a2" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto">
+              <polygon points="0 0, 6 2.5, 0 5" fill="#888"/>
+            </marker>
+          </defs>
+          <!-- rooms -->
+          <rect x="80" y="5" width="40" height="28" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="100" y="24" fill="#ccc" font-size="9" text-anchor="middle">S1</text>
+          <rect x="5" y="55" width="40" height="28" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="25" y="74" fill="#ccc" font-size="9" text-anchor="middle">S2</text>
+          <rect x="80" y="55" width="40" height="28" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="100" y="74" fill="#ccc" font-size="9" text-anchor="middle">S3</text>
+          <rect x="155" y="55" width="40" height="28" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="175" y="74" fill="#ccc" font-size="9" text-anchor="middle">S4</text>
+          <rect x="42" y="105" width="40" height="28" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="62" y="124" fill="#ccc" font-size="9" text-anchor="middle">S5</text>
+          <rect x="118" y="105" width="40" height="28" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="138" y="124" fill="#ccc" font-size="9" text-anchor="middle">S6</text>
+          <!-- connections (bidirectional) -->
+          <line x1="100" y1="33" x2="25" y2="55" stroke="#556" stroke-width="1.5"/>
+          <line x1="100" y1="33" x2="100" y2="55" stroke="#556" stroke-width="1.5"/>
+          <line x1="100" y1="33" x2="175" y2="55" stroke="#556" stroke-width="1.5"/>
+          <line x1="25" y1="83" x2="62" y2="105" stroke="#556" stroke-width="1.5"/>
+          <line x1="100" y1="83" x2="62" y2="105" stroke="#556" stroke-width="1.5"/>
+          <line x1="100" y1="83" x2="138" y2="105" stroke="#556" stroke-width="1.5"/>
+          <line x1="175" y1="83" x2="138" y2="105" stroke="#556" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Zones with local freedom</h3>
+      <p>Each act is a small cluster of 3–5 rooms you can wander freely. But moving <em>between acts</em> is still a one-way gate — crossing into Act 2 means Act 1 is behind you. Spatial within each act, linear across acts.</p>
+      <div style="margin-top:12px">
+        <svg viewBox="0 0 240 130" style="width:240px;height:130px" xmlns="http://www.w3.org/2000/svg">
+          <!-- act 1 zone -->
+          <rect x="3" y="20" width="68" height="90" rx="6" fill="none" stroke="#4a6080" stroke-dasharray="4,3" opacity="0.5"/>
+          <text x="37" y="16" fill="#666" font-size="8" text-anchor="middle">ACT 1</text>
+          <rect x="10" y="28" width="28" height="22" rx="3" fill="#2a3545" stroke="#4a6080"/>
+          <text x="24" y="43" fill="#ccc" font-size="8" text-anchor="middle">S1</text>
+          <rect x="44" y="28" width="22" height="22" rx="3" fill="#2a3545" stroke="#4a6080"/>
+          <text x="55" y="43" fill="#ccc" font-size="8" text-anchor="middle">S2</text>
+          <rect x="10" y="65" width="22" height="22" rx="3" fill="#2a3545" stroke="#4a6080"/>
+          <text x="21" y="80" fill="#ccc" font-size="8" text-anchor="middle">S3</text>
+          <rect x="44" y="65" width="22" height="22" rx="3" fill="#2a3545" stroke="#4a6080"/>
+          <text x="55" y="80" fill="#ccc" font-size="8" text-anchor="middle">S4</text>
+          <line x1="38" y1="39" x2="44" y2="39" stroke="#556" stroke-width="1.5"/>
+          <line x1="24" y1="50" x2="21" y2="65" stroke="#556" stroke-width="1.5"/>
+          <line x1="55" y1="50" x2="55" y2="65" stroke="#556" stroke-width="1.5"/>
+          <line x1="33" y1="76" x2="44" y2="76" stroke="#556" stroke-width="1.5"/>
+          <!-- gate to act 2 -->
+          <line x1="71" y1="65" x2="86" y2="65" stroke="#c08040" stroke-width="2" stroke-dasharray="3,2"/>
+          <text x="79" y="58" fill="#c08040" font-size="7" text-anchor="middle">gate</text>
+          <!-- act 2 zone -->
+          <rect x="86" y="20" width="68" height="90" rx="6" fill="none" stroke="#4a6080" stroke-dasharray="4,3" opacity="0.5"/>
+          <text x="120" y="16" fill="#666" font-size="8" text-anchor="middle">ACT 2</text>
+          <rect x="93" y="28" width="24" height="22" rx="3" fill="#2a3545" stroke="#4a6080"/>
+          <text x="105" y="43" fill="#ccc" font-size="8" text-anchor="middle">S5</text>
+          <rect x="124" y="28" width="24" height="22" rx="3" fill="#2a3545" stroke="#4a6080"/>
+          <text x="136" y="43" fill="#ccc" font-size="8" text-anchor="middle">S6</text>
+          <rect x="93" y="65" width="24" height="22" rx="3" fill="#2a3545" stroke="#4a6080"/>
+          <text x="105" y="80" fill="#ccc" font-size="8" text-anchor="middle">S7</text>
+          <line x1="117" y1="39" x2="124" y2="39" stroke="#556" stroke-width="1.5"/>
+          <line x1="105" y1="50" x2="105" y2="65" stroke="#556" stroke-width="1.5"/>
+          <line x1="105" y1="76" x2="124" y2="50" stroke="#556" stroke-width="1.5"/>
+          <!-- gate to act 3 -->
+          <line x1="154" y1="65" x2="169" y2="65" stroke="#c08040" stroke-width="2" stroke-dasharray="3,2"/>
+          <text x="162" y="58" fill="#c08040" font-size="7" text-anchor="middle">gate</text>
+          <!-- act 3 zone -->
+          <rect x="169" y="20" width="68" height="90" rx="6" fill="none" stroke="#4a6080" stroke-dasharray="4,3" opacity="0.5"/>
+          <text x="203" y="16" fill="#666" font-size="8" text-anchor="middle">ACT 3</text>
+          <rect x="175" y="28" width="24" height="22" rx="3" fill="#2a3545" stroke="#4a6080"/>
+          <text x="187" y="43" fill="#ccc" font-size="8" text-anchor="middle">S8</text>
+          <rect x="207" y="28" width="24" height="22" rx="3" fill="#2a3545" stroke="#4a6080"/>
+          <text x="219" y="43" fill="#ccc" font-size="8" text-anchor="middle">S9</text>
+          <rect x="175" y="65" width="24" height="22" rx="3" fill="#2a3545" stroke="#4a6080"/>
+          <text x="187" y="80" fill="#ccc" font-size="8" text-anchor="middle">S10</text>
+          <line x1="199" y1="39" x2="207" y2="39" stroke="#556" stroke-width="1.5"/>
+          <line x1="187" y1="50" x2="187" y2="65" stroke="#556" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Richer exits, same spine</h3>
+      <p>Keep the 10-scene narrative spine. But each scene gets real compass directions — north, south, east, west. Some lead to optional "texture rooms" (dead-ends with items or lore). The story still has a clear path but the world has depth.</p>
+      <div style="margin-top:12px">
+        <svg viewBox="0 0 200 140" style="width:200px;height:140px" xmlns="http://www.w3.org/2000/svg">
+          <!-- main path -->
+          <rect x="80" y="5" width="40" height="28" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="100" y="23" fill="#ccc" font-size="9" text-anchor="middle">S1 →</text>
+          <rect x="80" y="56" width="40" height="28" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="100" y="74" fill="#ccc" font-size="9" text-anchor="middle">S2 →</text>
+          <rect x="80" y="107" width="40" height="28" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="100" y="125" fill="#ccc" font-size="9" text-anchor="middle">S3 →</text>
+          <!-- main axis -->
+          <line x1="100" y1="33" x2="100" y2="56" stroke="#888" stroke-width="1.5"/>
+          <line x1="100" y1="84" x2="100" y2="107" stroke="#888" stroke-width="1.5"/>
+          <!-- texture rooms off S1 -->
+          <rect x="140" y="14" width="34" height="22" rx="4" fill="#1a2535" stroke="#334" stroke-dasharray="3,2"/>
+          <text x="157" y="29" fill="#556" font-size="8" text-anchor="middle">room</text>
+          <line x1="120" y1="19" x2="140" y2="25" stroke="#334" stroke-width="1" stroke-dasharray="3,2"/>
+          <!-- texture rooms off S2 -->
+          <rect x="15" y="63" width="34" height="22" rx="4" fill="#1a2535" stroke="#334" stroke-dasharray="3,2"/>
+          <text x="32" y="78" fill="#556" font-size="8" text-anchor="middle">room</text>
+          <line x1="80" y1="70" x2="49" y2="74" stroke="#334" stroke-width="1" stroke-dasharray="3,2"/>
+          <rect x="140" y="63" width="34" height="22" rx="4" fill="#1a2535" stroke="#334" stroke-dasharray="3,2"/>
+          <text x="157" y="78" fill="#556" font-size="8" text-anchor="middle">room</text>
+          <line x1="120" y1="70" x2="140" y2="74" stroke="#334" stroke-width="1" stroke-dasharray="3,2"/>
+          <!-- texture rooms off S3 -->
+          <rect x="15" y="114" width="34" height="22" rx="4" fill="#1a2535" stroke="#334" stroke-dasharray="3,2"/>
+          <text x="32" y="129" fill="#556" font-size="8" text-anchor="middle">room</text>
+          <line x1="80" y1="121" x2="49" y2="125" stroke="#334" stroke-width="1" stroke-dasharray="3,2"/>
+          <!-- legend -->
+          <rect x="145" y="110" width="14" height="10" rx="2" fill="#2a3545" stroke="#4a6080"/>
+          <text x="163" y="120" fill="#888" font-size="8">story</text>
+          <rect x="145" y="124" width="14" height="10" rx="2" fill="#1a2535" stroke="#334" stroke-dasharray="2,1"/>
+          <text x="163" y="134" fill="#888" font-size="8">texture</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p style="color:#666;font-size:12px;margin-top:20px">All three keep the same number of scenes (~10). The difference is how much the player can deviate and whether they can go back.</p>

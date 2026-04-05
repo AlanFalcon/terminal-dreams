@@ -1,0 +1,110 @@
+<h2>How do rooms connect within a zone?</h2>
+<p class="subtitle">5–7 rooms per zone. How should they be laid out?</p>
+
+<div class="options">
+
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Consistent grid</h3>
+      <p>Rooms sit on a loose grid. If you go east from room A to room B, going west from B returns you to A. Directions are spatially honest. Players can build a mental map.</p>
+      <div style="margin-top:10px">
+        <svg viewBox="0 0 160 120" style="width:160px;height:120px" xmlns="http://www.w3.org/2000/svg">
+          <!-- 2x3 grid-ish -->
+          <rect x="10" y="10" width="36" height="26" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="28" y="27" fill="#ccc" font-size="9" text-anchor="middle">S1</text>
+          <rect x="62" y="10" width="36" height="26" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="80" y="27" fill="#ccc" font-size="9" text-anchor="middle">S2</text>
+          <rect x="114" y="10" width="36" height="26" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="132" y="27" fill="#ccc" font-size="9" text-anchor="middle">S3</text>
+          <rect x="10" y="60" width="36" height="26" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="28" y="77" fill="#ccc" font-size="9" text-anchor="middle">S4</text>
+          <rect x="62" y="60" width="36" height="26" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="80" y="77" fill="#ccc" font-size="9" text-anchor="middle">S5</text>
+          <rect x="114" y="60" width="36" height="26" rx="4" fill="#1a2535" stroke="#5080c0" stroke-width="2" stroke-dasharray="4,2"/>
+          <text x="132" y="77" fill="#5080c0" font-size="9" text-anchor="middle">gate</text>
+          <!-- horizontal connections (east/west) -->
+          <line x1="46" y1="23" x2="62" y2="23" stroke="#556" stroke-width="1.5"/>
+          <line x1="98" y1="23" x2="114" y2="23" stroke="#556" stroke-width="1.5"/>
+          <line x1="46" y1="73" x2="62" y2="73" stroke="#556" stroke-width="1.5"/>
+          <line x1="98" y1="73" x2="114" y2="73" stroke="#556" stroke-width="1.5"/>
+          <!-- vertical connections (north/south) -->
+          <line x1="28" y1="36" x2="28" y2="60" stroke="#556" stroke-width="1.5"/>
+          <line x1="80" y1="36" x2="80" y2="60" stroke="#556" stroke-width="1.5"/>
+          <line x1="132" y1="36" x2="132" y2="60" stroke="#556" stroke-width="1.5"/>
+          <!-- direction labels -->
+          <text x="54" y="19" fill="#445" font-size="7" text-anchor="middle">E/W</text>
+          <text x="17" y="52" fill="#445" font-size="7">N/S</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Loose graph</h3>
+      <p>Rooms connect in ways that feel atmospheric, not geometric. Going north then south might not get you back. Directions are suggestive, not literal. Harder to map mentally — fits an uncanny or dreamlike tone.</p>
+      <div style="margin-top:10px">
+        <svg viewBox="0 0 160 120" style="width:160px;height:120px" xmlns="http://www.w3.org/2000/svg">
+          <rect x="60" y="5" width="36" height="26" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="78" y="22" fill="#ccc" font-size="9" text-anchor="middle">S1</text>
+          <rect x="5" y="50" width="36" height="26" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="23" y="67" fill="#ccc" font-size="9" text-anchor="middle">S2</text>
+          <rect x="60" y="50" width="36" height="26" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="78" y="67" fill="#ccc" font-size="9" text-anchor="middle">S3</text>
+          <rect x="115" y="50" width="36" height="26" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="133" y="67" fill="#ccc" font-size="9" text-anchor="middle">S4</text>
+          <rect x="30" y="93" width="36" height="26" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="48" y="110" fill="#ccc" font-size="9" text-anchor="middle">S5</text>
+          <rect x="95" y="93" width="36" height="26" rx="4" fill="#1a2535" stroke="#5080c0" stroke-width="2" stroke-dasharray="4,2"/>
+          <text x="113" y="110" fill="#5080c0" font-size="9" text-anchor="middle">gate</text>
+          <!-- asymmetric connections -->
+          <line x1="78" y1="31" x2="23" y2="50" stroke="#556" stroke-width="1.5"/>
+          <line x1="78" y1="31" x2="78" y2="50" stroke="#556" stroke-width="1.5"/>
+          <line x1="78" y1="31" x2="133" y2="50" stroke="#556" stroke-width="1.5"/>
+          <line x1="23" y1="76" x2="48" y2="93" stroke="#556" stroke-width="1.5"/>
+          <line x1="78" y1="76" x2="48" y2="93" stroke="#556" stroke-width="1.5"/>
+          <line x1="133" y1="76" x2="113" y2="93" stroke="#556" stroke-width="1.5"/>
+          <line x1="78" y1="76" x2="113" y2="93" stroke="#556" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Hub + spokes</h3>
+      <p>Each zone has a central room. All others connect to it. You always return to the hub to reach a new room. Simple to navigate, impossible to get lost — but also less interesting to explore.</p>
+      <div style="margin-top:10px">
+        <svg viewBox="0 0 160 120" style="width:160px;height:120px" xmlns="http://www.w3.org/2000/svg">
+          <!-- hub -->
+          <rect x="57" y="42" width="42" height="28" rx="4" fill="#2a3545" stroke="#c08040" stroke-width="2"/>
+          <text x="78" y="60" fill="#c08040" font-size="9" text-anchor="middle">HUB</text>
+          <!-- spokes -->
+          <rect x="57" y="5" width="36" height="24" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="75" y="21" fill="#ccc" font-size="9" text-anchor="middle">S1</text>
+          <line x1="75" y1="29" x2="75" y2="42" stroke="#556" stroke-width="1.5"/>
+
+          <rect x="5" y="42" width="36" height="24" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="23" y="58" fill="#ccc" font-size="9" text-anchor="middle">S2</text>
+          <line x1="41" y1="54" x2="57" y2="54" stroke="#556" stroke-width="1.5"/>
+
+          <rect x="115" y="42" width="36" height="24" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="133" y="58" fill="#ccc" font-size="9" text-anchor="middle">S3</text>
+          <line x1="99" y1="54" x2="115" y2="54" stroke="#556" stroke-width="1.5"/>
+
+          <rect x="30" y="88" width="36" height="24" rx="4" fill="#2a3545" stroke="#4a6080"/>
+          <text x="48" y="104" fill="#ccc" font-size="9" text-anchor="middle">S4</text>
+          <line x1="68" y1="70" x2="48" y2="88" stroke="#556" stroke-width="1.5"/>
+
+          <rect x="90" y="88" width="36" height="24" rx="4" fill="#1a2535" stroke="#5080c0" stroke-width="2" stroke-dasharray="4,2"/>
+          <text x="108" y="104" fill="#5080c0" font-size="9" text-anchor="middle">gate</text>
+          <line x1="88" y1="70" x2="108" y2="88" stroke="#556" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -4,7 +4,23 @@ const { generateWorld } = require('./world-generator');
 const { bold, dim, clear, divider, colorize, renderInventory, renderMap } = require('../interfaces/render');
 
 const STATES = { LOADING: 'loading', PLAYING: 'playing', COMPLETE: 'complete', LOST: 'lost' };
-const HELP_TEXT = 'Commands: look | go [direction] | take [item] | talk to [character] | use [item] | map';
+const HELP_TEXT = 'Commands: look | go [direction] | take [item] | talk to [character] | use [item] | wait | listen | map';
+
+// Commands that invite the world to respond to stillness rather than action.
+// Passed to the latents processor with enriched framing so the AI knows
+// the player is receiving, not acting.
+const STILLNESS = {
+  wait:   `wait — the player has gone still. They are not acting. What does this place do when no one is moving? Let the world breathe around them.`,
+  listen: `listen — the player closes their eyes and only listens. What sounds does this place make? What does the silence here contain?`,
+  sit:    `sit — the player sits down. The perspective lowers. What does this place look like from here?`,
+};
+
+// Fallback text for stillness commands when there are no latents to engage.
+const STILLNESS_FALLBACK = {
+  wait:   (scene) => `The ${scene.type} continues around you. Time moves, though it is difficult to say in which direction.`,
+  listen: (scene) => `You listen. The ${scene.type} offers its particular silence — the kind that has texture if you stay with it long enough.`,
+  sit:    (scene) => `You sit. The ${scene.type} accommodates you. This is enough.`,
+};
 
 function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memorialGenerator,
   tileLibrary, tileCompositor, tileGenerator, latentsProcessor, zoneGenerator, descriptionGenerator, world: injectedWorld }) {
@@ -168,9 +184,12 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
     }
 
     if (result.type === 'unknown') {
+      const stillnessFrame = STILLNESS[normalized];
+      const latentCommand = stillnessFrame || normalized;
+
       if (latentsProcessor && currentScene.latents && currentScene.latents.length > 0) {
         const genreNames = world.genres.map(g => g.name);
-        const { text, effect } = await latentsProcessor.process(normalized, currentScene, latentConversation, genreNames);
+        const { text, effect } = await latentsProcessor.process(latentCommand, currentScene, latentConversation, genreNames);
         if (effect) {
           applyEffect(effect);
           world.discoveredLatents++;
@@ -189,6 +208,8 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
           }
         }
         onOutput('> ');
+      } else if (STILLNESS_FALLBACK[normalized]) {
+        onOutput('\n' + STILLNESS_FALLBACK[normalized](currentScene) + '\n\n> ');
       } else {
         onOutput('\nUnknown command. ' + HELP_TEXT + '\n\n> ');
       }
@@ -201,8 +222,23 @@ function createSession({ id, onOutput, onComplete, onLost, graveyardStore, memor
     const primaryGenre = world.genres[0]?.name;
     const rooms = world.visitedRoomIds.size;
     const roomWord = rooms === 1 ? 'room' : 'rooms';
+
     onOutput('\n\n' + colorize(bold(world.name), primaryGenre) + '\n');
-    onOutput(dim(`${rooms} ${roomWord} visited. The story ends here.`) + '\n\nCONNECTION CLOSED.\n');
+    onOutput(dim(`${rooms} ${roomWord} visited.`) + '\n\n');
+
+    // Those who finish deserve a closing line, same as those who don't.
+    const closing = await memorialGenerator.generate({
+      worldName: world.name,
+      genres: world.genres.map(g => g.name),
+      act: 3,
+      scene: currentScene ? currentScene.id : 'unknown',
+      commands: commandHistory,
+      completed: true,
+    }).catch(() => null);
+
+    if (closing) onOutput(dim(closing) + '\n\n');
+
+    onOutput('CONNECTION CLOSED.\n');
     await graveyardStore.writeCompleted({
       worldName: world.name,
       genres: world.genres.map(g => g.name),

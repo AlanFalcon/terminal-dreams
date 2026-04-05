@@ -1,6 +1,7 @@
 // play.js — run a Terminal Dreams session from the command line
 // Usage: node play.js [command1] [command2] ...
 // Or: node play.js (interactive)
+require('dotenv').config();
 const path = require('path');
 const readline = require('readline');
 

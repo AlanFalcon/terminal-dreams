@@ -1,0 +1,76 @@
+<h2>Three architectural approaches</h2>
+<p class="subtitle">When does the world get built? This drives everything else.</p>
+
+<div class="options">
+
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>All-upfront generation</h3>
+      <p>At session start: build the full world graph (all zones, rooms, connections, gate positions), then fire parallel Claude calls to generate every room description. Player waits ~8–12s before the game begins.</p>
+      <div class="pros-cons" style="margin-top:10px">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Zero mid-game pauses</li>
+          <li>Descriptions can reference the full world</li>
+          <li>Simplest session logic</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>Long startup wait</li>
+          <li>Generates rooms player may never visit</li>
+          <li>Costly (all Claude calls upfront)</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Lazy on first visit</h3>
+      <p>At session start: build the world graph instantly (no Claude calls). Room description generated on first visit — player sees a ~1–2s pause each time they enter a new room for the first time.</p>
+      <div class="pros-cons" style="margin-top:10px">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Fast startup</li>
+          <li>Only pays for rooms visited</li>
+          <li>Description has player context</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>Pause on every new room</li>
+          <li>Pause is most noticeable during exploration</li>
+          <li>Harder to handle errors mid-scene</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Zone-ahead generation ✦ recommended</h3>
+      <p>At session start: generate Act 1 only (3–5 Claude calls, ~3s). When player enters any room in a zone, generate the <em>next</em> zone in the background. By the time they reach the gate, the next zone is ready.</p>
+      <div class="pros-cons" style="margin-top:10px">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Fast startup (~3s, same feel as now)</li>
+          <li>No mid-game pauses in practice</li>
+          <li>Only generates zones the player reaches</li>
+          <li>Matches existing tile prefetch pattern</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>More orchestration complexity</li>
+          <li>Gate blocked briefly if player rushes through a zone</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="section" style="margin-top:20px">
+  <p class="label">What stays the same in all three</p>
+  <ul style="color:#aaa;font-size:13px;line-height:1.8">
+    <li>Room <strong>latents</strong> come from a hand-authored template library (one set per room type)</li>
+    <li>Slot-filling (LOCATION, CHARACTER, etc.) still handles narrative variability</li>
+    <li>The Act 2 fork, gate mechanic randomization, and grid layout are decided at world-gen time</li>
+    <li>Session code, command processor, latents processor — mostly unchanged</li>
+  </ul>
+</div>
