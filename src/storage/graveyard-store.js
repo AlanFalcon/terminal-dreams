@@ -9,6 +9,8 @@ function slugify(name) {
 function createGraveyardStore(graveyardDir) {
   if (!fs.existsSync(graveyardDir)) fs.mkdirSync(graveyardDir, { recursive: true });
   const completedLog = path.join(graveyardDir, '..', 'completed.log');
+  const recordsDir = path.join(graveyardDir, '..', 'completed');
+  if (!fs.existsSync(recordsDir)) fs.mkdirSync(recordsDir, { recursive: true });
 
   function uniqueSlug(base) {
     const existing = fs.readdirSync(graveyardDir)
@@ -34,9 +36,26 @@ function createGraveyardStore(graveyardDir) {
     fs.writeFileSync(path.join(graveyardDir, filename), content, 'utf8');
   }
 
-  async function writeCompleted({ worldName, genres, scenes, timestamp }) {
-    const line = `${timestamp} | ${worldName} | ${genres.join(',')} | ${scenes}/10\n`;
+  async function writeCompleted({ worldName, genres, rooms, timestamp }) {
+    const line = `${timestamp} | ${worldName} | ${genres.join(',')} | ${rooms} rooms\n`;
     fs.appendFileSync(completedLog, line, 'utf8');
+
+    // Write a colophon — a small record that this world was seen through to its end
+    const slug = uniqueSlug(slugify(worldName));
+    const isoSlug = timestamp.replace(/:/g, '-').replace(/\./g, '-');
+    const filename = `${isoSlug}-${slug}.md`;
+    const date = timestamp.split('T')[0];
+    const content = [
+      `# ${worldName}`,
+      ``,
+      `*completed ${date}*`,
+      ``,
+      `**genres** ${genres.join(' · ')}`,
+      `**rooms visited** ${rooms}`,
+      ``,
+      `*The story ended here.*`,
+    ].join('\n');
+    fs.writeFileSync(path.join(recordsDir, filename), content, 'utf8');
   }
 
   function listMemorials() {
