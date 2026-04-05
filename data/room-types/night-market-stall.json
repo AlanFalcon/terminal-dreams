@@ -1,0 +1,33 @@
+{
+  "type": "night-market-stall",
+  "tiles": ["location", "character"],
+  "latents": [
+    {
+      "fact": "a paper cone on the table holds something that smells like candied mango and condensed milk and something floral that has no name — sweet and slightly dizzying, the kind of sweetness you could not have described before this moment",
+      "hint": "add_item",
+      "item": "paper cone",
+      "item_desc": "A paper cone of unnamed sweetness. Candied mango. Condensed milk. Something floral you still cannot name. It is real. It is in your hands now."
+    },
+    {
+      "fact": "the vendor is not packing up — she was waiting, specifically, and when you arrived she moved something on the lower shelf exactly one inch toward you without looking at it",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "there is something on a lower shelf, wrapped in cloth — the vendor's hand returns to it without her noticing, the way a hand finds a familiar weight without being asked",
+      "hint": "add_item",
+      "item": "the wrapped thing",
+      "item_desc": "You unwrap it later. You do not need to describe it to anyone. It is yours. The vendor did not name a price because the price was already paid, somewhere earlier, in a currency you spent without knowing."
+    },
+    {
+      "fact": "one lantern overhead has writing on it in a language you don't read — when the light comes through the paper, the letters glow from inside, and you feel you have heard this word before under a different name",
+      "hint": "unlock_exit",
+      "exit": "north",
+      "exit_desc": "The lantern's light shifts and a narrow path opens beyond the stall.",
+      "target_scene": "__adjacent__"
+    },
+    {
+      "fact": "there is no maze here — the market always leads to this stall for the person who follows what pulls instead of what they planned, and the vendor has known you were coming since before you arrived",
+      "hint": "nothing"
+    }
+  ]
+}
