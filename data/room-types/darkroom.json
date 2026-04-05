@@ -1,0 +1,28 @@
+{
+  "type": "darkroom",
+  "tiles": ["atmosphere", "discovery"],
+  "latents": [
+    {
+      "fact": "something is developing in one of the trays — it hasn't finished yet, but the shape is already there, already arrived before it's visible",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "the red light here makes everything look like it's held just before a decision — every object at the moment before it becomes what it is",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a strip of negatives hangs from a line near the ceiling — held up to the safelight, the images are inverted: white skies, dark faces, a world that had to be reversed to be preserved",
+      "hint": "add_item",
+      "item": "strip of negatives",
+      "item_desc": "Everything inverted. The only way to carry the image was to carry it wrong-side-out."
+    },
+    {
+      "fact": "on the back of the door, someone has written in small letters: 'the image was already there. the chemicals just had to admit it.'",
+      "hint": "npc_note"
+    }
+  ],
+  "listen_latents": [
+    "the chemical trays make almost no sound — just the faint shift of liquid when the building breathes",
+    "somewhere, a timer is counting down, but you cannot see it — only hear it"
+  ]
+}
