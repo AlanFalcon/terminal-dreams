@@ -1,0 +1,32 @@
+{
+  "type": "dressing-room",
+  "tiles": ["threshold", "discovery"],
+  "latents": [
+    {
+      "fact": "a robe is bunched at the collar of a hook by the door. it was not thrown there in anger. it was set down carefully, by someone who finally knew they were done with it. the fabric still holds the shape of shoulders.",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "the mirror is lit but no one is standing in front of it. the bulbs are warm. whoever left did not bother to turn them off — not because they forgot, but because the light wasn't for them anymore.",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "on the vanity: greasepaint, a brush, a small jar of something that smells like cedar and burnt sugar. the jar is nearly empty. but not finished. whoever used it knew when to stop before the last of it was gone.",
+      "hint": "add_item",
+      "item": "cedar jar",
+      "item_desc": "Almost empty. Left on purpose. You keep the last of a thing when the using of it has become something you carry inside."
+    },
+    {
+      "fact": "a note tucked into the mirror frame, written in a hand that got steadier as it went: 'it wasn't fake. it was scaffolding. i wore it until i could stand without it. i am not ashamed of what held me up.'",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "the fire here is low. not dying — just even. steady. the kind of heat that has stopped performing warmth and simply is it.",
+      "hint": "npc_note"
+    }
+  ],
+  "listen_latents": [
+    "the faint hiss of a bulb that has been on a long time — not buzzing, just present",
+    "somewhere beyond the door: not applause, not silence. just the ordinary sound of someone moving through the world as themselves."
+  ]
+}
