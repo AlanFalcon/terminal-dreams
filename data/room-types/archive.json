@@ -17,6 +17,20 @@
       "hint": "npc_note"
     },
     {
+      "fact": "a compressed package — sealed years ago, still intact. everything exactly where it was when it was closed. nothing decayed. nothing forgot itself.",
+      "hint": "add_item",
+      "item": "dormant archive",
+      "item_desc": "A sealed {ADJ} container. Its contents are intact. Whatever was inside when it was closed is still inside now, waiting to expand."
+    },
+    {
+      "fact": "a timestamp embedded in a file: the last touch from hands that didn't know they would want this back",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a scripting language the archive cannot run — the instructions are correct, the interpreter is gone. the source knows exactly what it meant to do.",
+      "hint": "npc_note"
+    },
+    {
       "fact": "a restricted section behind a filing unit on a track",
       "hint": "unlock_exit",
       "exit": "east",
