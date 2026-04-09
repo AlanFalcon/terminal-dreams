@@ -1,0 +1,31 @@
+{
+  "type": "whispering-gallery",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "the curve of the wall remembers a voice — not quite sound anymore, but the shape of sound, a {ADJ} residue that gathers in the focal point and feels most like a sentence whose ending you almost know",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "a phrase is cut into the stone at waist height, without an author and without a date — touching it, you find it has the shape of something you almost said yesterday, and the shape is answer-sized",
+      "hint": "add_item",
+      "item": "carried phrase",
+      "item_desc": "A {ADJ} line you did not write but is now yours to carry. It belongs to whoever reaches for it next. When you say it aloud, it fits your mouth the way a name you have always known fits the first time you say it."
+    },
+    {
+      "fact": "you are alone in the gallery and the gallery is not — someone stood here recently enough that the stone still holds their temperature, and someone else, differently recent, left a sentence half-finished mid-air, and you can feel exactly where the end should go",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "if you speak now — any sentence, even a small one — the curve throws your voice to the other side of the gallery and brings it back a half-beat later in the same words, as if a second voice already knew; the air between the two echoes begins to hum, and the stone there is no longer wall",
+      "hint": "unlock_exit",
+      "exit": "east",
+      "exit_desc": "The two echoes meet in the middle and become a passage. You step through the place where your voice and its answer agreed.",
+      "target_scene": "__adjacent__"
+    },
+    {
+      "fact": "there is a sentence in this room that was said once and has not stopped being said — you cannot hear it with your ears; you hear it in the small space behind your sternum, the way a name you knew before you had words surfaces when you are not looking for it; the gallery is not a record of the sentence, the gallery is the sentence, still speaking",
+      "hint": "nothing"
+    }
+  ]
+}
