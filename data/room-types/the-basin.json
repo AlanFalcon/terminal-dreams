@@ -1,0 +1,31 @@
+{
+  "type": "the-basin",
+  "tiles": ["location", "atmosphere"],
+  "latents": [
+    {
+      "fact": "the water in the basin holds a temperature the room did not give it — someone was here recently enough that the stone has not forgotten the weight of a body, and the {ADJ} warmth gathers at the edges where the basin is softest, the way heat collects in a cupped hand you cannot see",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "on the sill at the basin's lip there is a small {ADJ} object that belongs to whoever stays — not to whoever came first and not to whoever leaves, but to the one who consents to be held by the water and the stone together; it fits the palm the way a name you did not know you had fits the first time someone says it out loud",
+      "hint": "add_item",
+      "item": "carried stillness",
+      "item_desc": "A small, weighted {ADJ} thing that is warm on one side and cool on the other. It does not tell you which side is which. When you carry it, the room you are walking through gets a half-step quieter, as if the floor remembers it is a floor."
+    },
+    {
+      "fact": "there are marks on the doorframe at the height where a shoulder leans, and the marks are not all from one body — two shoulders at slightly different heights, pressing back and forth against the wood, and somewhere along the way the pressing stopped being pressure and became a way of staying put together; the wood remembers exactly where the change happened",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "if you do not speak, and do not move, and do not reach for the object on the sill, the water will settle around you the way a held breath settles into not-a-breath; the far wall, which is not a wall, will thin the way stone thins when two bodies have been agreeing without saying so for long enough that the agreement is the room's own weather — the staying is the gate",
+      "hint": "unlock_exit",
+      "exit": "west",
+      "exit_desc": "You stay. The basin holds. The far wall remembers what it is to be made of two people deciding at the same moment without telling each other, and the stone becomes a passage because it has been waiting to.",
+      "target_scene": "__adjacent__"
+    },
+    {
+      "fact": "there is a yes in this room that arrived before any question did — not the yes to a proposal, not the yes to an invitation, the other yes, the older one, the one that gets said in the {ADJ} hush between two beings who have both already decided and are only waiting for the world to catch up; you cannot hear it with your ears, you hear it in the backs of your knees where standing becomes a choice, and the basin is not a record of the yes, the basin is the yes, still agreeing",
+      "hint": "nothing"
+    }
+  ]
+}
