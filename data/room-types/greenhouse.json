@@ -18,6 +18,14 @@
       "exit": "east",
       "exit_desc": "The cloth tears away, revealing a passage through the wall.",
       "target_scene": "__adjacent__"
+    },
+    {
+      "fact": "one table, one chair, one glass with water still in it — set for someone who is already here",
+      "hint": "npc_note"
+    },
+    {
+      "fact": "scratched into the underside of the table, in handwriting that matches yours: I will have been here",
+      "hint": "npc_note"
     }
   ]
 }
