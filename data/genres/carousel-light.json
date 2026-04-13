@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["carousel platform with the music still going", "fairground after closing", "mirrored hallway that loops back to itself", "ballroom where the orchestra hasn't noticed the dancers left", "the inside of a music box", "bandstand in winter", "revolving door that won't let you out on a new floor"],
+  "ANTAGONIST": ["the operator who keeps feeding tokens", "momentum that doesn't transport", "the song that restarts every time it almost ends", "the painted horse that remembers the last rider", "applause that never quite fades", "the mechanism pretending to be weather"],
+  "MACGUFFIN": ["the music-box key", "the ticket with no return printed on it", "the bell that stops the ride", "the off-switch nobody was told about", "the dancer's shoe that stopped turning"],
+  "THREAT": ["the ride ends without you having moved", "the song loops a beat longer this time", "the mirrors stop agreeing", "your reflection arrives at the next mirror before you do", "the music gets softer but never stops"],
+  "CHARACTER": ["ticket-taker who doesn't check tickets", "carousel horse with honest eyes", "dancer who has been spinning since before you got here", "child who got off the ride years ago and came back for their coat", "musician whose hands don't tire"],
+  "ADJ": ["gilt", "painted", "mirrored", "calliope", "worn-smooth", "still-turning", "chipped", "mechanical", "unbothered", "patient"],
+  "NOUN": ["carousel", "music box", "ticket", "mirror", "gilt", "brass pole", "painted horse", "mechanism", "loop", "refrain"]
+}
