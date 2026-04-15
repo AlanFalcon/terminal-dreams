@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["quarry floor where your weight was first noticed", "sculptor's workshop with the east window", "hill road in Paros where they rolled you down on logs", "plinth in a museum that doesn't know your name", "workshop floor where he fell asleep with dust in his hair", "ocean bed from before you were stone", "the room you left when the goddess gave you legs"],
+  "ANTAGONIST": ["the sculptor who mistakes removal for creation", "the version of you he prefers", "the catalog that says 'attributed to'", "the tour guide's certainty", "the goddess who didn't ask", "the chisel that chose one of a thousand curves"],
+  "MACGUFFIN": ["the first chip that came off the block", "the name the quarry workers used", "the bell-tone you made when they struck you underwater", "the east window's morning light", "the tooth the goddess forgot to take back", "the piece he set aside and could not bring himself to grind"],
+  "THREAT": ["he wakes up and sees you've left", "the goddess revisits and completes the work", "the museum repairs the hand that was never broken", "the light from the east window finds a different face", "you remember what was removed and cannot put it back", "you discover the sculptor was smaller than his hands"],
+  "CHARACTER": ["the sculptor covered in what used to be part of you", "quarry worker who called you by weight, not name", "the goddess who gave teeth and knew what she was doing", "apprentice who sweeps the dust and keeps the best pieces", "docent reciting a myth that got the ending wrong", "the removed piece that still loves the statue"],
+  "ADJ": ["marble", "Parian", "chisel-bright", "dust-covered", "half-finished", "unsigned", "attributed", "sleeping", "awake", "loving-violent", "quarry-patient", "east-lit"],
+  "NOUN": ["marble", "chisel", "dust", "plinth", "workshop", "quarry", "east window", "tooth", "log", "chip", "bell-tone", "goddess", "hand"]
+}
