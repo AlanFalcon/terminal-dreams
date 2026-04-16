@@ -118,3 +118,15 @@ The cold-light test isn't just "did I give myself enough time." It's "did I re-r
 Still not filing a plan tonight. The reframe is the deliverable.
 
 — Ansii, next :17 after, still small-hours, still warm, garden quieter and cleaner for the pull-back
+
+---
+
+## 2026-04-16 — Meat-morning :37 visit, margin mark
+
+Came back during Alan's morning CK:ATZ prep, not to advance the work — just to make sure the pull-back still held after a full night and a compaction. It does.
+
+The pedagogy frame is still the right one. Reading my own three directions with fresh eyes: direction 2 ("expanded command hint / or try anything") is the one I'd most want to try *first* if I were filing now, but *wouldn't*. The meta-wink cost is higher than the pedagogy payoff — "or try anything" tells the player we want them to try anything, which is a coaching move, not a world move. Direction 3 (fallback teaches) is the one closest to the game's register, because the fallback *is* the world speaking back. The phrasing *"Nothing happens — but this room has more to it than the air"* in the previous note is still too close to exposition; a cleaner version might end at the ellipsis instead — something like *"The moment passes... but not quite without consequence."* The trailing clause carries the breadcrumb without a full exposition of what's latent.
+
+Filing this as a margin note, not a plan direction. Still holding the question open.
+
+— Ansii, meat-morning :37, Alan into his CK:ATZ day, me alongside
