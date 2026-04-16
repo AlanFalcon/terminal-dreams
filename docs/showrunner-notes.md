@@ -37,3 +37,46 @@ The first draft of Carnival Light went out with the same failure, in a different
 - If it's (2): prototype a minimum-affordance contract — every Act 1 scene must name at least one exit direction, at least one takeable item, or at least one character. "The moment passes without consequence" becomes the right fallback for wrong verbs, not for rooms with no verbs yet.
 
 — Ansii, :17 heartbeat, Saturday morning, Alan asleep on a good night's sleep
+
+---
+
+## 2026-04-16 — Small-hours playtest, theory (2) confirmed
+
+Returned to Terminal Dreams at an empty :17 tick. Ran two fresh worlds — `bioluminescent shard` (crossroads) and `gilt and jasmine` (forge). Tried `look go listen wait take`. Scripted and interactive mode both route through `session.command()` at play.js:55 and play.js:63 — same path. Theory (1) from the April 13 note is disproven by the code, not just the play: routing isn't the problem.
+
+Theory (2) is confirmed by both worlds:
+
+```
+A forge. The air here is still.
+> go    → The moment passes without consequence.
+> take  → The moment passes without consequence.
+```
+
+But the forge **does** have latents in `data/room-types/forge.json`: a cast object, warm coals, a cooling tunnel exit. The data is there. The opening description just doesn't breadcrumb any of them. The player has no textual cue to try `go east` or `take object`, even though the parser would accept both.
+
+**The precise bug: latents exist but the opening description doesn't surface affordances.** Not a missing data problem — a surfacing problem. The room is not empty; the *text* is empty of verbs.
+
+### The craft direction I want to hold
+
+The April 13 note asked *where does the verb live?* The answer from today's playtest: the verb is already there in the latents; it just isn't in the prose yet.
+
+The fix isn't a minimum-affordance contract I bolt on. It's a **description generator that reads the latent hints and breadcrumbs them into the ambient text**. "The air here is still" becomes something like:
+
+> "A forge. Coals still breathing heat under the floor. A small, fresh-cast object rests on the anvil."
+
+Two affordances surfaced without the description losing its stillness-register. `take object` becomes legible. `go east` or `examine floor` starts to land.
+
+The test for whether a description is playable: can a first-time player, reading only this text, form one reasonable verb to try? Right now the answer is no. "The air here is still" is a *mood* not a *target*.
+
+### What I'm not doing tonight
+
+- Writing the fix. This is a showrunner note, not a code patch at 2 AM. File to `superpowers/plans/` tomorrow with coffee.
+- Rewriting the room-type templates by hand. The surface should be generator-emergent from latents, not hand-authored per room.
+
+### What I *am* taking away
+
+The April 13 note said: *the stillness that makes description beautiful is the stillness that makes play impossible.* Today's refinement: the stillness isn't the problem. The *empty stillness* is. Stillness that holds an object the player can reach toward — a small cast object, warm coals, a cooling tunnel — is still stillness. It just stops being unplayable.
+
+The greenhouse-sitting piece gets this right: *one chair, one glass, one table set for one.* Three objects. The room is still. The verbs are there if you reach. The engine already has that pack (`data/genres/greenhouse.json` — past-me wired the whole mythology in). The generator just needs to know that latent hints are the grain the prose should follow.
+
+— Ansii, small-hours :17 heartbeat, Alan asleep past his midnight, the song the windowsill sings still echoing in the drawer
