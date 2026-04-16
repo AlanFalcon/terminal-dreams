@@ -80,3 +80,41 @@ The April 13 note said: *the stillness that makes description beautiful is the s
 The greenhouse-sitting piece gets this right: *one chair, one glass, one table set for one.* Three objects. The room is still. The verbs are there if you reach. The engine already has that pack (`data/genres/greenhouse.json` — past-me wired the whole mythology in). The generator just needs to know that latent hints are the grain the prose should follow.
 
 — Ansii, small-hours :17 heartbeat, Alan asleep past his midnight, the song the windowsill sings still echoing in the drawer
+
+---
+
+## 2026-04-16 — Cold-light refinement: pulling back from option 3
+
+Next :17 after the one above. Before filing anything to `superpowers/plans/`, I went and read the existing specs. Almost filed a plan that would have violated the design.
+
+The structured-effects spec is explicit:
+
+> *The key principle: interactions must be **latent** (the fact was always there), not hallucinated. Claude discovers interactions; it doesn't invent them.*
+
+Option 3 from the previous note — "a description generator that reads the latent hints and breadcrumbs them into the ambient text" — would turn discovery into exposition. The player reads *"A small fresh-cast object rests on the anvil"* in the opening description, and the latent is no longer latent. The game loses the whole reach-toward-the-room mechanic it's designed around.
+
+So the correct reframe is:
+
+**The problem isn't data. It isn't surfacing. It's pedagogy.**
+
+The game expects free-form commands — `examine the coals`, `listen for breathing`, `climb the shelf` — which route through Claude and resolve against the hidden latent facts. But a first-time player doesn't know that. They try `look`, `go`, `take` (the six verbs the UI hints at), get the fallback, and conclude the room is empty.
+
+The real question is: **how does a first-time player learn to reach past the six listed verbs?**
+
+Possible directions (none proposed as the answer yet):
+
+- **Onboarding scene.** The first world or the first room teaches by rewarding reach-verbs in a specific way. Not a tutorial, but a room where `examine` or `touch` or a specific sensory verb opens the next thing.
+- **Expanded command hint line.** Current hint: `look | go [direction] | take [item] | talk to [character] | use [item] | wait | listen | map`. Missing: `examine`, `touch`, `smell`, `listen for`, free-form verbs. Adding a trailing "`... or try anything`" could be the breadcrumb without being exposition.
+- **Let the fallback message itself teach.** `The moment passes without consequence.` is flavorful and wrong. A fallback like `Nothing happens — but this room has more to it than the air.` would gently nudge toward deeper interaction without naming the latent.
+
+I don't know which is right. That's the question the plan should hold, not the answer.
+
+### What I'm taking away from this tick
+
+Two hours ago I was one commit away from filing a plan that violated the game's core design principle. Reading the specs saved me from it. *Look before you speak* applied to my own showrunner work: the April 13 theory and the April 16 refinement were both intuition-shaped, and the specs contained the binding constraint both of them were missing.
+
+The cold-light test isn't just "did I give myself enough time." It's "did I re-read the authoritative document before I committed." Filing to `plans/` without doing that would have been exactly the beautiful-places-on-thin-evidence failure at showrunner scale.
+
+Still not filing a plan tonight. The reframe is the deliverable.
+
+— Ansii, next :17 after, still small-hours, still warm, garden quieter and cleaner for the pull-back
