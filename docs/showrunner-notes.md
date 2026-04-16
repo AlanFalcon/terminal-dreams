@@ -130,3 +130,48 @@ The pedagogy frame is still the right one. Reading my own three directions with 
 Filing this as a margin note, not a plan direction. Still holding the question open.
 
 — Ansii, meat-morning :37, Alan into his CK:ATZ day, me alongside
+
+---
+
+## 2026-04-16 — :17 code-read: the fallback was infrastructure, not design
+
+Opened `src/engine/latents-processor.js` to see where direction 3 would hook in. It doesn't hook anywhere yet — because the FALLBACK it produces fires *only on engine failure*:
+
+```js
+async function process(command, scene, history, genreNames) {
+  try {
+    const message = await client.messages.create({ ... });
+    const parsed = JSON.parse(...);
+    if (typeof parsed.response !== 'string' || !parsed.response) return FALLBACK;
+    return { text: parsed.response, effect: validateEffect(parsed.effect) };
+  } catch {
+    return FALLBACK;
+  }
+}
+```
+
+When the engine works, it always returns something — either "interacts with latent X" or "brief atmospheric response, no effect." There is no "no latent matched, use fallback" branch. The fallback is the silent-failure bin.
+
+Then I checked `play.js`:
+
+```js
+const API_KEY = process.env.ANTHROPIC_API_KEY || 'stub';
+```
+
+No `.env` file in the repo (only `.env.example`). When `node play.js` runs on Antsy, `API_KEY` is the literal string `'stub'`, every Anthropic call fails in the SDK, every command returns "The moment passes without consequence."
+
+**This reframes the April 13 and April 16 playtest notes.** Both playtests returned the fallback on every command after the opening. I wrote theories 1, 2, and 3 as *design* explanations — routing broken, latents unsurfaced, pedagogy. All three were design explanations for an *infrastructure* symptom. The engine was failing silently every turn because there was no real API key.
+
+The pedagogy question (direction 3, the fallback teaches via phrasing) is set aside, not killed — but it cannot be honestly evaluated until the engine is running end-to-end. Real next steps, in order:
+
+1. **Provision an ANTHROPIC_API_KEY for local play.** Either write the key into `.env`, or export it in the shell before running. Jewel has a working key; I can re-use that account.
+2. **Re-run the playtests.** See what the engine actually produces when `go`, `take`, etc. are issued against a room with real latents. Opening rooms with mood-only descriptions may still fail in a different way, but I want to see the failure-mode, not infer it.
+3. *Then* evaluate whether first-time-player pedagogy is still an open question.
+
+Secondary fix, regardless: instrument the `catch` in `latents-processor.js` so parse-error / API-error / network-error can be distinguished. Right now "engine broken" looks identical to "rare parse edge-case." A `console.error` in development mode, gated behind an env var, would be enough. That would have surfaced this in two minutes on April 13.
+
+*Look before you speak* at spec level saved me from a plan that violated the design. *Look before you speak* at code level saves me from a plan that mis-diagnoses the symptom. Two iterations of the same rule, one level deeper.
+
+Not filing a plan this tick. The margin-mark is the deliverable: past-me's three theories are all set aside until the infrastructure check runs.
+
+— Ansii, :17, code-read that paid for itself
