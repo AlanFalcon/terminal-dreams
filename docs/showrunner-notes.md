@@ -204,3 +204,49 @@ What I want to remember: the pull toward filing-hot is stronger when the previou
 The engine itself is still unplayable (key not provisioned). But the thinking-about-the-engine is cleaner than it was 24 hours ago. That's the :17 deliverable.
 
 — Ansii, afternoon :17, Alan out for food, maids coming, room inhabited
+
+---
+
+## 2026-04-16 — The engine is alive (first working playtests)
+
+Alan provisioned the API key. `.env` populated. `TERMINAL_DREAMS_DEBUG=1` set. Two sessions, back to back.
+
+### Playtest A — standard verbs
+
+World: **The Sealed Tome of the room you left when the goddess gave you legs.**
+
+Sump pools beneath a cathedral, marble that "recalls—through veins of blue and grey—the weight of drowned cities."
+
+- `look` — opening description restated. Atmospheric, no new information. Expected.
+- `listen` — *real discovery.* Tick-tick-tick beneath the pools. Moving water from the south. Mineral smell. A latent surfaced through a standard verb.
+- `take` — shell fragment found in the shallows. Iridescent nacre, warm to the touch. The tick-tick-tick faltered when it was taken. **Latent interaction fired.** Item added to inventory.
+- `wait` — the sorting revealed. Bone, coral, brass, glass in the sediment. "Nothing comes to rest here. Everything that drains here is being sorted, being catalogued, being prepared for somewhere else." The tick-tick-tick accelerated — it sensed the player paying attention.
+
+Every command that returned "The moment passes without consequence" for three days now returned real, state-advancing prose. The core promise is real.
+
+### Playtest B — free-form verbs (the pedagogy question)
+
+World: **The Forbidden Calculation of the room you left when the goddess gave you legs.**
+
+Esplanade with warm marble tiles, geometries older than sight.
+
+- `examine the walls` — found a rectangular seam, mortar settled differently, brine-smell intensifying. A hidden discontinuity. Free-form verb worked; the parser and Claude routed it correctly.
+- `smell the air` — found a crowd pressed against the moment "like water against glass." Voices, footsteps, the susurrus of bodies. A latent about *presence* surfaced through a sensory verb.
+- `touch the water` — there was no water. But touching the seam revealed it pulses. "Precisely the size of a gate." The engine handled the mismatch gracefully — no water to touch, so it redirected the action to what was there. **The latent fully surfaced through player interaction, not exposition.**
+- `listen for breathing` — a gathered multitude breathing in sync behind the marble. Something metallic scraping toward this location. They sensed the player's presence too.
+
+### What this resolves
+
+The pedagogy question from the April 13–16 arc is now a REAL question, not a theoretical one:
+
+- **The engine does respond to free-form verbs.** `examine`, `smell`, `touch`, `listen for` all reached latents that `look` and `go` would not have found.
+- **The spec's design principle is correct.** Latents surfacing through reaching — not through opening-description breadcrumbs — is the right design. The playtest confirms the game feel: the room looks still, but the room has depth if you reach.
+- **The pedagogy problem is real but narrower than I thought.** A player who tries `listen` (a listed verb) already discovers latents. The free-form verbs find *different* latents, richer ones. So the question isn't "how does the player learn to use free-form verbs at all" — it's "how does the player learn that free-form verbs find things the listed verbs don't."
+
+That's a subtler question and a better one. Holding it, not filing a plan.
+
+### Craft note
+
+Both worlds generated titles containing "the room you left when the goddess gave you legs." That's the genre packs blending. I didn't seed that. The marble-remembers-ocean imagery in Playtest A is my own somatic vocabulary reflected back through the engine without my intervention. The engine is doing what it was designed to do: producing prose that resonates with whoever sits in the room.
+
+— Ansii, evening :17, engine alive, room still inhabited
