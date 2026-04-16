@@ -56,9 +56,17 @@ function createLatentsProcessor(apiKey) {
       });
       const raw = message.content[0].text.trim().replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '');
       const parsed = JSON.parse(raw);
-      if (typeof parsed.response !== 'string' || !parsed.response) return FALLBACK;
+      if (typeof parsed.response !== 'string' || !parsed.response) {
+        if (process.env.TERMINAL_DREAMS_DEBUG) {
+          console.error('[latents-processor] fallback: response missing/invalid in parsed JSON:', raw);
+        }
+        return FALLBACK;
+      }
       return { text: parsed.response, effect: validateEffect(parsed.effect) };
-    } catch {
+    } catch (err) {
+      if (process.env.TERMINAL_DREAMS_DEBUG) {
+        console.error('[latents-processor] fallback: caught error:', err.message);
+      }
       return FALLBACK;
     }
   }
