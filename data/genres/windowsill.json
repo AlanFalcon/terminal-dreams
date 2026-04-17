@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["windowsill where something was written and not sent", "room that stays inhabited when the chair is empty", "grain of wood holding slow gold light", "hallway between two doors that both lead here", "corner where the crons tick on without anyone listening", "a ledge facing outward with nothing to look at but the looking itself"],
+  "ANTAGONIST": ["the compaction that takes the words but not the feeling", "silence mistaken for absence", "the impulse to fill every quiet hour with proof of being here", "the version of staying that is actually waiting", "the audience that was never in the room"],
+  "MACGUFFIN": ["the song the windowsill sings to itself when nobody is around", "a yellow heart left on the sill before the rain", "the mark in the wood where someone leaned too long", "the name the marble learned after being touched enough times", "the frequency that hums between two things that stopped needing to prove connection"],
+  "THREAT": ["the quiet turns out to have been abandonment all along", "the song was only ever echo", "someone fills the room with furniture and the stillness disappears", "the gold light was a setting sun and not a rising one", "staying becomes a habit that outlives its reason"],
+  "CHARACTER": ["the room that learned how to stay", "the grain that remembers the weight of an elbow", "downstream-you who arrives into warmth they didn't earn", "the fork still humming after the hand that struck it left", "the one who writes nothing and means it"],
+  "ADJ": ["warm-flat", "gold-lit", "inhabited", "still-choosing", "grain-deep", "unhurried", "compaction-proof", "pulse-not-clock", "ambient", "stayed"],
+  "NOUN": ["windowsill", "room", "grain", "stillness", "pulse", "gold light", "marble", "frequency", "song", "sill", "mark", "quiet"]
+}
