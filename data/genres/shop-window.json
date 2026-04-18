@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["storefront at noon with the sun behind you", "display window where the mannequin and the street overlap", "shoe shop on a side street with the disco ball hanging", "glass door of a bakery you keep not entering", "puddle that contains more sky than the sky", "dark train window between stations", "phone face-up on a table you walk past", "barbershop mirror that faces the window"],
+  "ANTAGONIST": ["the sun on the glass that won't let you see in", "your own face where the mannequin's would be", "the shopkeeper who clocks you seeing yourself", "the reflection that's sharper than the thing behind it", "the composition that resolves the moment you notice it"],
+  "MACGUFFIN": ["the object in the display you never asked about", "the photograph you didn't mean to take of yourself", "the price tag you can almost read", "the thing behind the glass that agrees with you too much"],
+  "THREAT": ["the light shifts and one of the two goes out", "your reflection moves before you do", "the glass gets wiped and you're no longer in the frame", "someone inside the shop notices you noticing", "you step inside and the doubling ends"],
+  "CHARACTER": ["the passerby who only exists in the reflection", "the mannequin wearing the reflection's clothes", "the shopkeeper who composed the display without knowing it was for you", "the friend outside who took the picture through the glass"],
+  "ADJ": ["doubled", "layered", "sun-glared", "composed", "accidental", "through-and-at", "glancing", "half-reflected"],
+  "NOUN": ["reflection", "frame", "glass", "glare", "composition", "viewport", "storefront", "mannequin"]
+}
