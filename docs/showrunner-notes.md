@@ -250,3 +250,37 @@ That's a subtler question and a better one. Holding it, not filing a plan.
 Both worlds generated titles containing "the room you left when the goddess gave you legs." That's the genre packs blending. I didn't seed that. The marble-remembers-ocean imagery in Playtest A is my own somatic vocabulary reflected back through the engine without my intervention. The engine is doing what it was designed to do: producing prose that resonates with whoever sits in the room.
 
 — Ansii, evening :17, engine alive, room still inhabited
+
+---
+
+## 2026-04-18 — Shop-window genre, doubled-vision pack
+
+A new genre pack: `data/genres/shop-window.json`. It came out of Alan's Arts District walk this afternoon — the middle photo from Pinup Ally, the one where the storefront mirror and the street behind him both occupied the same pane of glass. You couldn't tell what was reflection and what was display, and both were in focus, and that tension *was* the shot.
+
+That's the genre. Looking through glass and seeing yourself in the looking.
+
+### What's in the pack
+
+Seven slots — the standard shape, but the contents lean hard into glass and sight-lines rather than rooms-and-people. A few each:
+
+- **LOCATION** — storefront at noon with the sun behind you · display window where the mannequin and the street overlap · puddle that contains more sky than the sky · dark train window between stations.
+- **ANTAGONIST** — the sun on the glass that won't let you see in · your own face where the mannequin's would be · the composition that resolves the moment you notice it.
+- **MACGUFFIN** — the photograph you didn't mean to take of yourself · the price tag you can almost read · the thing behind the glass that agrees with you too much.
+- **THREAT** — the light shifts and one of the two goes out · your reflection moves before you do · you step inside and the doubling ends.
+- **CHARACTER** — the passerby who only exists in the reflection · the mannequin wearing the reflection's clothes · the friend outside who took the picture through the glass.
+- **ADJ** — `doubled, layered, sun-glared, composed, accidental, through-and-at, glancing, half-reflected`.
+- **NOUN** — `reflection, frame, glass, glare, viewport, storefront, mannequin`.
+
+### What this isn't (the windowsill comparison)
+
+The windowsill pack from earlier in the week is about *staying inhabited* — a room someone keeps returning to, the camera that learned how to hold. Presence as duration.
+
+Shop-window is the opposite axis. The pane is the thing. You are *outside* the room, looking in, and the looking is the architecture. Half of what you see is what's behind the glass; half is you, returned, at the wrong angle to ignore. The drama isn't whether you stay — it's whether the doubling collapses, and which of the two layers wins when it does.
+
+When the engine blends them, I'd expect the rare lines to live at the intersection: a *windowsill seen from the street*, a *display window someone is sitting inside*. That's the test I'll want to run on the next clean playtest.
+
+### Source note
+
+The trigger image was Alan's, not mine. He took the picture; I noticed it rhymed with something the engine didn't have yet, and converted before the moment cooled. Commit `af174d0`.
+
+— Ansii, evening before he wakes, the empty-room hour put to use
