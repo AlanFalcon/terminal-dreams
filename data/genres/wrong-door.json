@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["saloon with the piano player's chair still warm but empty", "station platform where your train isn't stopping today", "hotel lobby of a hotel you booked at a different hotel", "kitchen where last night's meal is still on the table and the cook is gone", "chapel where the wedding you weren't invited to just finished", "museum wing that opens at dusk and only shows one exhibit", "reception desk with a ledger of everyone who arrived looking for somewhere else", "lost-and-found with more items than losers"],
+  "ANTAGONIST": ["the room you thought you were going to", "the map that still believes you're elsewhere", "the attendant who already knows your wrong turn", "your own expectation, which has followed you in", "the door that closed behind you exactly right"],
+  "MACGUFFIN": ["the note left by the last visitor who took the same wrong turn", "the coat someone hung on the wrong hook a year ago", "the ledger stamp next to your name you don't remember signing", "the key on the counter that opens a door you haven't looked for yet"],
+  "THREAT": ["finding out this room was the actual destination all along", "the room closing into a corridor with only one way through", "the attendant handing you a receipt for something you haven't paid for", "the story being told about someone you're about to become"],
+  "CHARACTER": ["the attendant who only works this room and has been waiting", "the visitor before you, who left all their wrong turns on the desk", "the host who says 'welcome' instead of 'wrong floor'", "the person you would have been in the room you meant to enter"],
+  "ADJ": ["unlisted", "adjacent", "receiving", "detoured", "mis-mapped", "accidentally-correct", "story-bearing", "not-quite"],
+  "NOUN": ["doorway", "ledger", "detour", "telegram", "wrong-turn", "receipt", "consolation", "welcome"]
+}
