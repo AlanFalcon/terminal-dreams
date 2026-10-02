@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["guard booth whose logbook says DENIED on every line while the gate stands open", "lighthouse keeping a perfect record of every ship its dark lamp failed to warn", "smoke-detector aisle where every unit is blinking green", "switchboard with every jack lit and no operator's ear on any line", "weather station that has measured the storm faithfully for ninety-three days and told no one", "mailroom where every letter is stamped RETURNED and every one was delivered", "server closet with one file that grew too big to fit through the door"],
+  "ANTAGONIST": ["the log that agrees with you", "the green light", "the warning spoken into the wrong ear", "the checker that checked itself and found itself well", "the confidence of a file that has never once been read"],
+  "MACGUFFIN": ["the one alarm that is wired to a bell", "the line in the log that is true", "the exit code that means what it says", "the probe that makes the silent thing speak once"],
+  "THREAT": ["discovering that the wall you leaned on was never load-bearing", "the record being right about everything except whether anyone heard it", "fixing it, and learning how long it was broken", "being the instrument, and not knowing"],
+  "CHARACTER": ["the night guard who wrote BLOCKED nineteen times and waved every car through", "the technician who only trusts what she has caused herself", "the alarm who has been shouting into a pillow since May", "the auditor who asks which two worlds would look exactly the same from here"],
+  "ADJ": ["green-lit", "well-logged", "unheard", "self-certified", "faithful", "mute", "load-unbearing", "verified"],
+  "NOUN": ["logbook", "exit code", "probe", "bell", "pillow", "receipt", "green light", "witness"]
+}
