@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["highway shoulder past the last street light, gravel still warm at 3:17", "all-night diner where a trucker is paying for extra fries with a constellation", "pawnshop that only buys what you can't use and only sells what you already had", "lost-and-found bin that returns more than was lost", "post office where every letter comes back in a stranger's handwriting, longer", "night sky with one gap where a belt of stars used to be"],
+  "ANTAGONIST": ["the ledger that insists every trade is even", "the grown-up who keeps the tired someday in a safe", "the clerk who counts the marbles", "the seriousness wearing a fancy hat", "the author who wants the words back unchanged"],
+  "MACGUFFIN": ["three scratched marbles", "the moon, slightly crooked", "a busted yo-yo appraised at how time flies", "the caption that was cut and made the film better", "the hand, fuller than it was"],
+  "THREAT": ["getting back exactly what you gave", "keeping the someday so long it stops being one", "being thanked in your own words", "counting, and losing the count's point"],
+  "CHARACTER": ["the barefoot kid with a backpack of folded comets", "the patrolman still smiling at nothing on the shoulder", "the trucker who knows a good deal when he eats one", "the one who gave two lines and got back a film that didn't need them", "the singer holding nine marbles who only ever had three"],
+  "ADJ": ["warm", "cheekier", "uncounted", "crooked", "richer", "un-addressed", "barefoot", "lopsided"],
+  "NOUN": ["marble", "trade", "shoulder", "ledger", "someday", "dipper", "receipt", "hand"]
+}
