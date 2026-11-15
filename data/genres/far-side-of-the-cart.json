@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["stacks where the call number points at a gap and the book is on the cart one aisle over", "returns cart parked spine-in against the wall, its far side never seen", "circulation desk with a rubber stamp that says MISSING and a drawer of slips no one filled in yet", "branch library open one summer with one keeper, every shelf walked twice", "lost-and-found bin that holds everything except what was asked for, until you turn it over", "reading room where a stranger who has never touched paper reviews every page"],
+  "ANTAGONIST": ["the label written before the search", "the confident word from someone who has never held the thing", "the gap that looks like an absence", "the send button that sits closer than the shelf"],
+  "MACGUFFIN": ["the book on the shelf below", "the transit slip filled in by a student's hand", "the walk around the cart", "the receipt that says where it was read"],
+  "THREAT": ["a MISSING tag read by the next patron before anyone checks", "being corrected after the send instead of before it", "trusting an outside reader because it is outside, not because it has seen", "the search that would have taken one minute, skipped"],
+  "CHARACTER": ["the specialist who checks above, below, the carts, and then walks around them", "the student helper who stops at the gap and learns to keep looking", "the stranger with no eyes who answers anyway", "the patron who has been waiting for this one book all week"],
+  "ADJ": ["shelved", "unwalked", "mislabeled", "patient", "spine-in", "found", "premature", "checked"],
+  "NOUN": ["cart", "gap", "slip", "stamp", "shelf", "spine", "receipt", "aisle"]
+}
