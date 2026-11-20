@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["a hallway outside a closed apartment door, the only light coming from under it", "rehearsal room where the script stops two pages before the scene everyone remembers", "drawing table covered in single parts, a hip socket here and a leg stump there, nothing joined yet", "reading table with a 1952 letter under a magnifier and a legal pad of forty-one question marks", "projection booth where the last reel is real footage of the night someone said nobody would believe it"],
+  "ANTAGONIST": ["the question asked of a part, to someone who can only judge the whole", "the error that points straight down the lens and so looks like no error", "the scene planned so carefully that nothing is left to find", "the confident word on page one before the book exists"],
+  "MACGUFFIN": ["the full typed draft, every word guessed and something put in", "the scene that isn't in the script", "the second camera, fifty degrees around", "the complete figure, head to feet, with one question attached"],
+  "THREAT": ["asking someone for your job and keeping theirs for yourself", "a fragment judged right that reads wrong once it is joined", "the door stays shut and the fear stays in the hallway", "the part checked only from the angle that made it"],
+  "CHARACTER": ["the writer yelling his fears through a door at the old trainer on the other side", "the patron who cannot read a word alone but knows her grandmother's voice in a sentence", "the helper who stops asking 'barn or born?' and types the whole letter", "the reader who says 'complete it and I can say if it reads'"],
+  "ADJ": ["unscripted", "whole", "joined", "found", "half-built", "end-on", "typed", "shut"],
+  "NOUN": ["door", "draft", "part", "whole", "lens", "scene", "letter", "hallway"]
+}
