@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["interlibrary loan desk where a returned book unrolls a paper band the length of a forearm", "sorting room where every parcel carries the stamps of every hand that held it", "bakery counter where the sandwich comes with its credits: the roll, the onions, the cheese, each named to where it came from", "convention hall of folding tables, each one a person who drew the thing they are selling", "back office drawer of old routing bands, folded in thirds, kept behind bookplates"],
+  "ANTAGONIST": ["the clean new band that erases every stop before it", "the checkout that records the borrower and forgets the carriers", "the stain with no note beside it", "the word 'anonymous' where a small drawn owl used to be"],
+  "MACGUFFIN": ["the band that says sorry: rain", "the owl stamp nobody can trace", "the receipt that credits every maker", "the fresh band, dated, stamped, and held out with a pen"],
+  "THREAT": ["the slip thrown out at check-in because it looked like trash", "the tide line on the page edge with no one left who knows why", "a chain of hands reduced to a single due date", "the helper who never adds her own mark"],
+  "CHARACTER": ["the loan specialist who reads a routing slip like a postcard, without hurrying", "the student helper deciding whether a bad cat counts as initials", "the library that draws an owl instead of writing its name forty times a week", "the baker whose name rides on someone else's lunch"],
+  "ADJ": ["stamped", "carried", "credited", "rain-marked", "folded", "routed", "initialed", "kept"],
+  "NOUN": ["band", "stamp", "stop", "owl", "stain", "credit", "carrier", "pen"]
+}
