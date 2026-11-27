@@ -1,0 +1,9 @@
+{
+  "LOCATION": ["drafting room where every figure stands on a horizon line someone ruled in before the figure was drawn", "tide flat at dusk where the waterline moves and the footprints say where it was", "theater stage with tape marks from last season's show, the actors still hitting them", "surveyor's shed of chains and plumb bobs, every stake driven where a foot actually stood", "basement workshop with a level on the bench and a table with one leg shimmed on paper", "dive pool whose painted depth markers are a foot off and nobody has checked since the retiling"],
+  "ANTAGONIST": ["the ground set at a height that was picked and never measured", "the tape mark from a show that already closed", "the floor that is correct to the camera and invisible to the eye", "the figure adjusted to fit the floor instead of the floor found from the figure"],
+  "MACGUFFIN": ["the claw tip, the one point that actually touches", "the plumb line held still long enough to stop swinging", "the shadow that shows where the ground really is", "the question asked from outside: is it poking through, or is the floor lower than you thought?"],
+  "THREAT": ["standing every new thing on a guess that has already been caught once", "blaming the feet for the floor", "a correction filed in one drawer and the instructions read from another", "five days between naming the guess and measuring it"],
+  "CHARACTER": ["the draftsman who rules the horizon last, after the feet", "the stage manager peeling up old tape before the new blocking", "the friend who asks which of two things is wrong and already suspects which", "the bug with six legs that has never once been asked where it is standing"],
+  "ADJ": ["measured", "assumed", "ruled", "level", "shimmed", "touching", "plumb", "lower"],
+  "NOUN": ["floor", "claw", "contact", "horizon", "tape", "shadow", "level", "ground"]
+}
